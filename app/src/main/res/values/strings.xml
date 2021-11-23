@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">b07_project</string>
     <string name="Dummy">android studio github sucks</string>
+    <string name="searchText">Search</string>
+    <string name="search_hint">Search for Stores...</string>
+    <string name="search_item">Search for Items... </string>
+    <string name="add_quantity">+</string>
+    <string name="remove_quantity">-</string>
+    <string name="order_title">Your Order</string>
+    <string name="zero">0</string>
+    <string name="order">Add to Order</string>
+    <string name="name_hint">Item Name...</string>
+    <string name="brand_hint">Item Brand...</string>
+    <string name="cost_hint">Item Cost...</string>
+    <string name="title_activity_bottom_nav">BottomNav</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
     <string name="title_activity_sign_up">signUpActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
