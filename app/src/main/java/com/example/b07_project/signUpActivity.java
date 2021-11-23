@@ -48,7 +48,7 @@ public class signUpActivity extends AppCompatActivity {
         TextView emailText = findViewById(R.id.SignUpUserEmailAddress);
         TextView passwordText = findViewById(R.id.SignUpUserPassword);
         TextView confirmPasswordText = findViewById(R.id.signUpConfirmPassword);
-        Spinner dropDownMenu = findViewById(R.id.accountTypeMenu)
+        Spinner dropDownMenu = findViewById(R.id.accountTypeMenu);
 
 
         String email = emailText.getText().toString();
