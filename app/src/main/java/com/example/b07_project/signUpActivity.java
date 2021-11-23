@@ -48,12 +48,13 @@ public class signUpActivity extends AppCompatActivity {
         TextView emailText = findViewById(R.id.SignUpUserEmailAddress);
         TextView passwordText = findViewById(R.id.SignUpUserPassword);
         TextView confirmPasswordText = findViewById(R.id.signUpConfirmPassword);
+        Spinner dropDownMenu = findViewById(R.id.accountTypeMenu)
 
-        boolean passwordEqual = false;
 
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
         String confirmPassword = confirmPasswordText.getText().toString();
+        String accountType = dropDownMenu.getSelectedItem().toString();
         
         //https://www.javatpoint.com/java-email-validation
         String validEmail = ("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\" +
