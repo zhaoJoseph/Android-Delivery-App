@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.B07_project">
         <activity
+            
+            android:name=".CustomerOrderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".StoreListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ItemActivity"
+            android:exported="false"
+            android:parentActivityName=".StoreActivity" />
+        <activity
+            android:name=".StoreActivity"
+            android:exported="false"
+            android:parentActivityName=".StoreListActivity" />
+        <activity
             android:name=".signUpActivity"
             android:exported="false"
             android:label="@string/title_activity_sign_up"
