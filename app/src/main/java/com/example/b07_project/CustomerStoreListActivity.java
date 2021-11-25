@@ -3,10 +3,8 @@ package com.example.b07_project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 public class CustomerStoreListActivity extends AppCompatActivity {
 
@@ -15,18 +13,20 @@ public class CustomerStoreListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        addStores();
         setContentView(R.layout.activity_customer_store_list);
+
     }
 
     private void addStores(){
 
         //get the linear layout so we can add everything into it
-        LinearLayout frame = (LinearLayout) findViewById(R.id.linear_layout);
+        LinearLayout frame = findViewById(R.id.linear_layout);
 
-        //TODO add in access to arraylist of stores and have storelist be referenced by it
+        //TODO add in access to arraylist of stores and have store list be referenced by it
 
 
-        storeList = new Button[];
+        storeList = new Button[27];
 
 
         //https://stackoverflow.com/questions/19088317/list-of-button-in-android
@@ -45,9 +45,4 @@ public class CustomerStoreListActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-    }
 }
