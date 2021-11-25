@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+
+import AppClasses.*;
+
+
 public class CustomerStoreListActivity extends AppCompatActivity {
 
     Button[] storeList;
@@ -24,9 +29,10 @@ public class CustomerStoreListActivity extends AppCompatActivity {
         LinearLayout frame = findViewById(R.id.linear_layout);
 
         //TODO add in access to arraylist of stores and have store list be referenced by it
+        ArrayList<Shop> shopList = new ArrayList<Shop>();
 
-
-        storeList = new Button[27];
+        
+        storeList = new Button[];
 
 
         //https://stackoverflow.com/questions/19088317/list-of-button-in-android

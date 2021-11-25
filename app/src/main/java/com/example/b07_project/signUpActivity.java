@@ -2,7 +2,6 @@ package com.example.b07_project;
 
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,12 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.b07_project.databinding.ActivitySignUpBinding;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
