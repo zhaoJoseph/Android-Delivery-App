@@ -4,10 +4,17 @@ import java.util.ArrayList;
 
 public class Shop {
     private String name;
-    private ArrayList<ItemDescription> Menu;
+    private ArrayList<ItemDescription> menu;
     public Shop(String n){
-        Menu = new ArrayList<ItemDescription>();
+        menu = new ArrayList<ItemDescription>();
         name = n;
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public ArrayList<ItemDescription> getMenu(){
+        return menu;
+    }
 }
