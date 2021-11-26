@@ -10,4 +10,8 @@ public class ItemDescription {
         Description = desc;
         ItemID = id;
     }
+
+    public String getName() {
+        return ItemName;
+    }
 }

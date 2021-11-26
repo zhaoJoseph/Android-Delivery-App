@@ -32,12 +32,6 @@ public class CustomerStoreListActivity extends AppCompatActivity {
         //TODO add a local reference to all the shops to allShop
 
     }
-    public void searchForStore(View view){
-        LinearLayout frame = findViewById(R.id.linear_layout);
-
-
-        addStoresToPage();
-    }
 
     private void addStoresToPage(){
 
