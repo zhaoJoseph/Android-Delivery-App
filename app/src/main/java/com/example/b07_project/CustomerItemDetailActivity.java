@@ -22,12 +22,15 @@ public class CustomerItemDetailActivity extends AppCompatActivity {
         TextView itemPrice = findViewById(R.id.item_cost);
 
         itemTitle.setText(CustomerStoreItemListActivity.selectedItem.getName());
+        itemBrand.setText(CustomerStoreItemListActivity.selectedItem.getBrand());
+        itemPrice.setText(("$" + CustomerStoreItemListActivity.selectedItem.getPrice()));
 
         EditText quantity = findViewById(R.id.number_of_id);
         //TODO please change this section to the quantity of item actually ordered
         //I can not do so currently as it requires the other section
         //you need to find the id first, then find the actual thing with the ID
-        quantity.setText(0);
+        int numberOrdered = 0;
+        quantity.setText(numberOrdered);
     }
 
     public void minusItem(View view){
