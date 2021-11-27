@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.B07_project">
         <activity
-            android:name=".CustomerStoreItemList"
+            android:name=".CustomerItemDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerStoreItemListActivity"
             android:exported="false" />
         <activity
             android:name=".CustomerStoreListActivity"

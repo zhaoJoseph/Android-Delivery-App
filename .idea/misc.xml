@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_item_detail.xml" value="0.4010416666666667" />
         <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_store_item_list.xml" value="0.403125" />
         <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_store_list.xml" value="0.403125" />
-        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_main.xml" value="0.855036855036855" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_item.xml" value="0.38958333333333334" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_main.xml" value="0.728448275862069" />
         <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_sign_up.xml" value="0.5546875" />
         <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/sign_up.xml" value="0.9852579852579852" />
       </map>

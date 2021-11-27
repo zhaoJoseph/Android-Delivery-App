@@ -1,5 +1,7 @@
 package com.example.b07_project;
 
+//John Li
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -53,12 +55,10 @@ public class CustomerStoreListActivity extends AppCompatActivity {
         };
 
         //get the linear layout so we can add everything into it
-        LinearLayout frame = findViewById(R.id.linear_layout);
+        LinearLayout frame = findViewById(R.id.store_list);
 
         //remove all store buttons on the page
-        for (int i = 0; i < storeList.length; i++) {
-            frame.removeView(storeList[i]);
-        }
+        frame.removeAllViews();
 
         //add everything to the store page
         storeList = new Button[listOfShop.size()];

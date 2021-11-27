@@ -1,5 +1,7 @@
 package com.example.b07_project;
 
+//John Li
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -21,6 +24,7 @@ public class CustomerStoreItemListActivity extends AppCompatActivity {
     private ArrayList<ItemDescription> listOfAllItem;
     private ArrayList<ItemDescription> queriedItem;
     private View.OnClickListener btnClicked;
+    protected static ItemDescription selectedItem;
     private Button[] itemList;
 
     @Override
@@ -28,6 +32,9 @@ public class CustomerStoreItemListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_store_item_list);
         listOfAllItem = CustomerStoreListActivity.selected.getMenu();
+        TextView storeName = (TextView) findViewById(R.id.store_name);
+        storeName.setText(CustomerStoreListActivity.selected.getName());
+        addItemToPage();
 
     }
 
@@ -47,16 +54,16 @@ public class CustomerStoreItemListActivity extends AppCompatActivity {
         btnClicked = v -> {
             Object tag = v.getTag();
             int tags = Integer.parseInt(tag.toString());
-            //TODO, all the corresponding item to the order list
+            selectedItem = queriedItem.get(tags);
+
         };
 
         //get the linear layout so we can add everything into it
-        LinearLayout frame = findViewById(R.id.linear_layout);
+        LinearLayout frame = findViewById(R.id.item_list);
 
         //remove all store buttons on the page
-        for (int i = 0; i < itemList.length; i++) {
-            frame.removeView(itemList[i]);
-        }
+        frame.removeAllViews();
+
 
         //add everything to the store page
        itemList = new Button[queriedItem.size()];
