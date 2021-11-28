@@ -22,7 +22,7 @@
         <entry key="app/src/main/res/layout/activity_customer_store_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/owner_item_card.xml" value="0.175" />
         <entry key="app/src/main/res/layout/owner_page_1.xml" value="0.175" />
-        <entry key="app/src/main/res/layout/owner_page_2.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/owner_page_2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/owner_page_3.xml" value="0.25" />
       </map>
     </option>
