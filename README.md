@@ -2,6 +2,6 @@
 this time with no gradle error
 hopefully
 # File Legend
-app/google-settings.json => verifies firebase account
+app/google-settings.json => verifies firebase account <br />
 app/MainActivity => Login Page <br />
 app/signinActivity => Signup Page
