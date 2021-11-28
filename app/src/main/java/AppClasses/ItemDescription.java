@@ -1,22 +1,24 @@
 package AppClasses;
 
 public class ItemDescription {
-    private String ItemName;
-    private String Description;
-    private String ItemID;
+    private String itemName;
     private String brand;
     private double price;
+    private int itemID;
     public ItemDescription(){}
-    public ItemDescription(String name, String desc,String id, String brand, double price){
-        ItemName = name;
-        Description = desc;
-        ItemID = id;
+    public ItemDescription(String name, int id, String brand, double price){
+        this.itemName = name;
+        this.itemID = id;
         this.brand = brand;
         this.price = price;
     }
 
     public String getName() {
-        return ItemName;
+        return itemName;
+    }
+
+    public int getID(){
+        return itemID;
     }
 
     public String getBrand() {

@@ -1,11 +1,23 @@
 package AppClasses;
 
-public class Item {
-    private ItemDescription ItemDesc;
-    private Integer Quantity;
+public class Item extends ItemDescription{
+    private ItemDescription item_description;
+    private int quantity;
     public Item(){}
-    public Item(ItemDescription id,Integer q){
-        Quantity = q;
-        ItemDesc = id;
+    public Item(ItemDescription item_description,Integer quantity){
+        this.quantity = quantity;
+        this.item_description = item_description;
+    }
+
+    public int getQuantity(){
+        return quantity;
+    }
+
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
+    }
+
+    public ItemDescription getItemDescription(){
+        return item_description;
     }
 }

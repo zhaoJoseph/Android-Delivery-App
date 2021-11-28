@@ -8,21 +8,30 @@ abstract public class User {
 
     protected String email;
     protected ArrayList<Order> orders;
+
+    public User(String email,String username, ArrayList<Order> orders){
+        this.email = email;
+        this.username = username;
+        this.orders = orders;
+    }
+
     public ArrayList<Order> GetOrders(){
+
         return orders;
     }
 
     public String getEmail() {
+
         return email;
     }
 
     public String getUsername() {
+
         return username;
     }
 
-    public User(String e,String u){
-        this.email = e;
-        this.username = u;
-        this.orders = new ArrayList<Order>();
+    public void addToOrders(Order order){
+        orders.add(order);
     }
+
 }

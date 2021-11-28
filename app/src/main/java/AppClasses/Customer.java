@@ -3,7 +3,7 @@ package AppClasses;
 import java.util.ArrayList;
 
 public class Customer extends User{
-    public Customer(String em, String usrn, ArrayList<Order> ord){
-        super(em,usrn);
+    public Customer(String email, String username, ArrayList<Order> orders){
+        super(email,username, orders);
     }
 }
