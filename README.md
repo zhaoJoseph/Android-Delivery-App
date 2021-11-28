@@ -4,4 +4,4 @@ hopefully
 # File Legend
 app/google-settings.json => verifies firebase account <br />
 app/MainActivity => Login Page <br />
-app/signinActivity => Signup Page
+app/signUpActivity => Signup Page
