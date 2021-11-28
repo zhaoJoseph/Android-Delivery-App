@@ -21,7 +21,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:hint="store name"
-            app:layout_constraintTop_toRightOf="@+id/search_button" />
+            />
 
 
         <Button
