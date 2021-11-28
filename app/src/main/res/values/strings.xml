@@ -17,6 +17,13 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_sign_up">signUpActivity</string>
+    <!-- Strings for Owner pages -->
+    <string name="dollar_sign">$</string>
+    <string name="add_item">Add Item</string>
+    <string name="delete_item">Delete Item</string>
+    <string name="item_name">Item Name:</string>
+    <string name="brand_name">Brand Name:</string>
+    <string name="price">Price :</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
