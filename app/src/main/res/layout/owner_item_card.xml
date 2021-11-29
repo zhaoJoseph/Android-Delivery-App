@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="4dp"
-    android:layout_margin="10dp">
+    android:layout_margin="5dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textSize="16sp"/>
 
         <!--Item Brand-->
         <TextView
@@ -26,8 +27,7 @@
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
-            android:textSize="12sp" />
+            android:layout_marginTop="30dp" />
 
         <!--$ Sign-->
         <TextView
@@ -36,7 +36,8 @@
             android:layout_marginStart="310dp"
             android:layout_centerVertical="true"
             android:text="@string/dollar_sign"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textSize="16sp"/>
 
         <!--Item Price-->
         <TextView
@@ -44,7 +45,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="320dp" />
+            android:layout_marginStart="320dp"
+            android:textSize="16sp"/>
 
     </RelativeLayout>
 

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import AppClasses.ItemDescription;
 
 public class OP1Adapter extends RecyclerView.Adapter<OP1Adapter.OP1ViewHolder> {
-    private final ArrayList<ItemDescription> items_list;
+    private ArrayList<ItemDescription> items_list;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -67,7 +67,6 @@ public class OP1Adapter extends RecyclerView.Adapter<OP1Adapter.OP1ViewHolder> {
         holder.item_name.setText(current_item.getName());
         holder.item_brand.setText(current_item.getBrand());
         holder.item_price.setText(String.valueOf(current_item.getPrice()));
-
     }
 
     @Override
@@ -75,5 +74,9 @@ public class OP1Adapter extends RecyclerView.Adapter<OP1Adapter.OP1ViewHolder> {
         return items_list.size();
     }
 
+    public void filterList(ArrayList<ItemDescription> filtered_list) {
+        items_list = filtered_list;
+        notifyDataSetChanged();
+    }
 }
 
