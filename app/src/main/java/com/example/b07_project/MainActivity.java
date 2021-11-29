@@ -27,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void launch_page(boolean IsCustomer){
+        Intent intent;
         if(IsCustomer){
-            Intent intent = new Intent(this, CustomerOrderActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, CustomerOrderActivity.class);
         }
         else{
-            Intent intent = new Intent(this, StoreActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, StoreActivity.class);
         }
+        startActivity(intent);
     }
     /*
     uncomment this once we have a signout button else impossible to signout
