@@ -76,6 +76,10 @@ public class ItemActivity extends AppCompatActivity {
         if(amount != 0) {
             this.finish();
         }
+        if(amount == 0){
+
+        }
+
     }
 
 }
