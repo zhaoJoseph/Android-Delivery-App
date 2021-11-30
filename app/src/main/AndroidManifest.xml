@@ -10,13 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.B07_project">
         <activity
+            android:windowSoftInputMode="adjustPan"
             android:name=".CustomerOrderActivity"
             android:exported="true" />
+        <activity
+            android:windowSoftInputMode="adjustPan"
+            android:name=".StoreListActivity"
+            android:exported="false" />
         <activity
             android:name=".ItemActivity"
             android:exported="false"
             android:parentActivityName=".StoreActivity" />
         <activity
+            android:windowSoftInputMode="adjustPan"
             android:name=".StoreActivity"
             android:exported="false"
             android:parentActivityName=".StoreListActivity" />
@@ -26,9 +32,6 @@
             android:label="@string/title_activity_sign_up"
             android:theme="@style/Theme.B07_project.NoActionBar" />
         <activity
-            android:name=".StoreListActivity"
-            android:exported="false"/>
-        <activity
             android:name=".OP1Activity"
             android:exported="false" />
         <activity
@@ -37,14 +40,6 @@
             android:exported="false" />
         <activity
             android:name=".OP3Activity"
-            android:parentActivityName=".OP1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".OP4Activity"
-            android:parentActivityName=".OP1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".OP5Activity"
             android:parentActivityName=".OP1Activity"
             android:exported="false" />
         <activity

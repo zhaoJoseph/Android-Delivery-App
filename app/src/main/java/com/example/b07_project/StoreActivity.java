@@ -1,6 +1,7 @@
 package com.example.b07_project;
 
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
@@ -19,10 +20,16 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class StoreActivity extends AppCompatActivity {
+
+    private final String PREF_NAME = "pref_name";
     private ArrayAdapter adapter;
     private ArrayList<String> item_names = new ArrayList<>(Arrays.asList("item 1", "item 2", "item 3", "item 4", "item 5", "item 6"));
     private String store_name;
@@ -32,7 +39,7 @@ public class StoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
-        store = getPreferences(MODE_PRIVATE);
+        store = getSharedPreferences(PREF_NAME,MODE_PRIVATE);
         store_name = store.getString("pref_store", null);
         if(store_name == null) {
             store_name = getIntent().getStringExtra("store_name");
@@ -73,12 +80,34 @@ public class StoreActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(StoreActivity.this, ItemActivity.class);
                 intent.putExtra("item_name", (String)adapter.getItem(position));
-                SharedPreferences.Editor store_edit = store.edit();
-                store_edit.putString("pref_store", store_name);
-                store_edit.apply();
-                store_edit.commit();
+                store.edit().putString("pref_store", store_name).commit();
                 startActivity(intent);
 
+            }
+        });
+
+        BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+
+        nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch(id){
+                    case R.id.navigation_stores:
+                        Intent storeIntent = new Intent(StoreActivity.this, StoreListActivity.class);
+                        startActivity(storeIntent);
+                        break;
+                    case R.id.navigation_orders:
+                        Intent orderIntent = new Intent(StoreActivity.this, CustomerOrderActivity.class);
+                        startActivity(orderIntent);
+                        break;
+                    case R.id.navigation_logout:
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent = new Intent(StoreActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+                return true;
             }
         });
 
