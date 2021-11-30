@@ -64,11 +64,6 @@ public class MainActivityTestSuccessfulLogin {
 
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.buttonLogIn), withText("login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
                         isDisplayed()));
         materialButton.perform(click());
 

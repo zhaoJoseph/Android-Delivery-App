@@ -23,8 +23,6 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import encryption.MD5Encryption;
-
 public class signUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     @Override
@@ -112,10 +110,6 @@ public class signUpActivity extends AppCompatActivity {
             passwordText.setError("must be longer than 6 characters!!!");
             return;
         }
-
-
-        MD5Encryption encrypt = new MD5Encryption();
-        String encryptedPassword = encrypt.encrypt(password);
 
         //TODO add the encrypted password and email as a new account
         mAuth.createUserWithEmailAndPassword(email, password)

@@ -14,8 +14,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import encryption.MD5Encryption;
-
 public class ItemActivity extends AppCompatActivity {
     private Button ordered;
     private Button add;
@@ -61,29 +59,6 @@ public class ItemActivity extends AppCompatActivity {
         });
     }
 
-    public void loginAccount(View view){
-        TextView emailText = (TextView) findViewById(R.id.userEmailAddress);
-        TextView passwordText = (TextView) findViewById(R.id.userPassword);
-
-        String email = emailText.getText().toString();
-        String password = passwordText.getText().toString();
-
-        MD5Encryption encrypt = new MD5Encryption();
-        String encryptedPassword = encrypt.encrypt(password);
-
-        //TODO check if encryptedPassword matches with data in the firebase, if yes go into the next page
-
-        emailText.setText("");
-        passwordText.setText("");
-
-    }
-
-    public void signupAccount(View view){
-
-        Intent intent = new Intent(this, signUpActivity.class);
-
-        startActivity(intent);
-    }
 
     public void edit_quantity(View v){
         if(v == add){

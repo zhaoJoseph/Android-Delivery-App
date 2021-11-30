@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,8 +13,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import encryption.MD5Encryption;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -56,9 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
-
-        MD5Encryption encrypt = new MD5Encryption();
-        String encryptedPassword = encrypt.encrypt(password);
 
         //TODO check if encryptedPassword matches with data in the firebase, if yes go into the next page
         mAuth.signInWithEmailAndPassword(email, password)
