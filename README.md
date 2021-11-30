@@ -8,4 +8,6 @@ app/signUpActivity => Signup Page <br />
 app/StoreListActivity => Lists Stores (CP1) <br />
 app/StoreActivity => Lists store Items (CP2) <br />
 app/ItemActivity => Lists Items in Store (CP3) <br />
-app/CustomerOrderActivity => Lists Customer Orders (CP5) <br />
+app/CustomerBasket => Lists Items in Customer Basket (CP4) <br />
+app/CustomerOrderActivity => Lists Customer Purchased Orders with ID (CP5) <br />
+app/CustomerOrderId => Lists Item in Purchased Customer Order (CP 6) <br />
