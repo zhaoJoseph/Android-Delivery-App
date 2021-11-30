@@ -74,10 +74,12 @@ public class CustomerOrderActivity extends AppCompatActivity {
         });
 
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        nav.getMenu().setGroupCheckable(0, false,true);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                nav.getMenu().setGroupCheckable(0, true,true);
                 int id = item.getItemId();
                 switch(id){
                     case R.id.navigation_stores:

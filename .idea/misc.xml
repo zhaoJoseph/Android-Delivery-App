@@ -3,27 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_order.xml" value="0.1" />
-        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_store_item_list.xml" value="0.3507537688442211" />
-        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_store_list.xml" value="0.1" />
-        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_main.xml" value="0.42874692874692877" />
-        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_sign_up.xml" value="0.42874692874692877" />
-        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_item_detail.xml" value="0.4010416666666667" />
-        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_order.xml" value="0.5303442028985508" />
-        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_store_item_list.xml" value="0.403125" />
-        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_store_list.xml" value="0.403125" />
-        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_item.xml" value="0.38958333333333334" />
-        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_main.xml" value="0.728448275862069" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.1814814814814815" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_main.xml" value="0.855036855036855" />
         <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_sign_up.xml" value="0.5546875" />
         <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/sign_up.xml" value="0.9852579852579852" />
-        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.20546875" />
-        <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.20546875" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.20546875" />
-        <entry key="app/src/main/res/layout/activity_customer_store_list.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/owner_item_card.xml" value="0.175" />
-        <entry key="app/src/main/res/layout/owner_page_1.xml" value="0.175" />
-        <entry key="app/src/main/res/layout/owner_page_2.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/owner_page_3.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_customer_basket.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_customer_navigation.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_customer_order.xml" value="0.2776978417266187" />
+        <entry key="app/src/main/res/layout/activity_customer_order_id.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_customer_store_item_list.xml" value="0.35520833333333335" />
+        <entry key="app/src/main/res/layout/activity_customer_store_list.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/activity_item.xml" value="0.20520833333333333" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.1082427536231884" />
+        <entry key="app/src/main/res/layout/activity_store.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_storelist.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/customer_navigation_activity.xml" value="0.19010416666666666" />
+        <entry key="app/src/main/res/layout/display_item.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.209375" />
+        <entry key="app/src/main/res/layout/owner_item_card.xml" value="0.209375" />
+        <entry key="app/src/main/res/layout/owner_page_1.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/owner_page_2.xml" value="0.11096014492753623" />
+        <entry key="app/src/main/res/layout/owner_page_3.xml" value="0.12817028985507245" />
+        <entry key="app/src/main/res/layout/view_item.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.21203703703703702" />
       </map>
     </option>
   </component>
