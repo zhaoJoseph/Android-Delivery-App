@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public void launch_page(boolean IsCustomer){
         Intent intent;
         if(IsCustomer){
-            intent = new Intent(this, CustomerOrderActivity.class);
+            intent = new Intent(this, StoreListActivity.class);
         }
         else{
             intent = new Intent(this, StoreActivity.class);

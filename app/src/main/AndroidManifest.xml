@@ -26,6 +26,9 @@
             android:label="@string/title_activity_sign_up"
             android:theme="@style/Theme.B07_project.NoActionBar" />
         <activity
+            android:name=".StoreListActivity"
+            android:exported="false"/>
+        <activity
             android:name=".OP1Activity"
             android:exported="false" />
         <activity
