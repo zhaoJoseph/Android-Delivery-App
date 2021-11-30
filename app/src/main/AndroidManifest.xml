@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.b07_project">
-    <uses-permission android:name="android.permission.INTERNET" />goats
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -34,6 +34,14 @@
             android:exported="false" />
         <activity
             android:name=".OP3Activity"
+            android:parentActivityName=".OP1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".OP4Activity"
+            android:parentActivityName=".OP1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".OP5Activity"
             android:parentActivityName=".OP1Activity"
             android:exported="false" />
         <activity

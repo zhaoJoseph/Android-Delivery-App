@@ -30,5 +30,6 @@ public class Order {
         return content;
     }
 
+    public void add_item(Item item){ content.add(item); } // Currently added for testing
 
 }
