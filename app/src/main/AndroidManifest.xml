@@ -43,6 +43,13 @@
             android:parentActivityName=".OP1Activity"
             android:exported="false" />
         <activity
+            android:name=".OP4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".OP5Activity"
+            android:parentActivityName=".OP4Activity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

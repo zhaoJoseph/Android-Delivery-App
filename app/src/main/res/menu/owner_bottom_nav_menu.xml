@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/owner_navigation_store"
+        android:icon="@drawable/ic_baseline_store_24"
+        android:title="@string/Store" />
+
+    <item
+        android:id="@+id/owner_navigation_orders"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="@string/Orders" />
+
+    <item
+        android:id="@+id/owner_navigation_logout"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="@string/Logout" />
+
+</menu>

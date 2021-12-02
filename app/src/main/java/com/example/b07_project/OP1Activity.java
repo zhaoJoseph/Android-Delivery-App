@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.b07_project.Model.ItemDescriptionData;
 import com.example.b07_project.Model.ShopData;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -76,6 +79,7 @@ public class OP1Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         mDatabase_Shop_User.child("shops").child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -106,6 +110,7 @@ public class OP1Activity extends AppCompatActivity {
 
             }
         });
+
         EditText search_bar = findViewById(R.id.OP1_search);
         search_bar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -116,6 +121,32 @@ public class OP1Activity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) { filter(s.toString()); }
+        });
+
+        BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.owner_bottomNavigationView);
+        nav.setSelectedItemId(R.id.owner_navigation_store);
+
+        nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch(id){
+                    case R.id.owner_navigation_store:
+                        Intent storeIntent = new Intent(OP1Activity.this, OP1Activity.class);
+                        startActivity(storeIntent);
+                        break;
+                    case R.id.owner_navigation_orders:
+                        Intent orderIntent = new Intent(OP1Activity.this, OP4Activity.class);
+                        startActivity(orderIntent);
+                        break;
+                    case R.id.owner_navigation_logout:
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent = new Intent(OP1Activity.this, MainActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+                return true;
+            }
         });
     }
 

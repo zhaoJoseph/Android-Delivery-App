@@ -8,12 +8,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.example.b07_project.Model.ItemData;
 
-import AppClasses.Item;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OP5Adapter extends RecyclerView.Adapter<OP5Adapter.OP5ViewHolder> {
-    private ArrayList<Item> content;
+    private ArrayList<ItemData> items_list;
 
     public static class OP5ViewHolder extends RecyclerView.ViewHolder {
         public TextView item_name;
@@ -26,9 +28,7 @@ public class OP5Adapter extends RecyclerView.Adapter<OP5Adapter.OP5ViewHolder> {
         }
     }
 
-    public OP5Adapter(ArrayList<Item> content) {
-        this.content = content;
-    }
+    public OP5Adapter(List<ItemData> items_list) { this.items_list = (ArrayList<ItemData>) items_list; }
 
     @NonNull
     @Override
@@ -39,13 +39,12 @@ public class OP5Adapter extends RecyclerView.Adapter<OP5Adapter.OP5ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull OP5ViewHolder holder, int position) {
-        Item current_item = content.get(position);
-
-        holder.item_name.setText(current_item.getItemDescription().getName());
+        ItemData current_item = items_list.get(position);
+        holder.item_name.setText(current_item.getData().getName());
         holder.quantity.setText(String.valueOf(current_item.getQuantity()));
     }
 
     @Override
-    public int getItemCount() { return content.size(); }
+    public int getItemCount() { return items_list.size(); }
 
 }
