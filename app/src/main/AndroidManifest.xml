@@ -24,7 +24,7 @@
         <activity
             android:windowSoftInputMode="adjustPan"
             android:name=".StoreActivity"
-            android:exported="false"
+            android:exported="true"
             android:parentActivityName=".StoreListActivity" />
         <activity
             android:name=".signUpActivity"

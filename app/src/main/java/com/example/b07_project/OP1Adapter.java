@@ -7,12 +7,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.b07_project.Model.ItemDescriptionData;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import AppClasses.ItemDescription;
 
 public class OP1Adapter extends RecyclerView.Adapter<OP1Adapter.OP1ViewHolder> {
-    private ArrayList<ItemDescription> items_list;
+    private List<ItemDescriptionData> items_list;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -48,7 +51,7 @@ public class OP1Adapter extends RecyclerView.Adapter<OP1Adapter.OP1ViewHolder> {
         }
     }
 
-    public OP1Adapter(ArrayList<ItemDescription> items_list) {
+    public OP1Adapter(List<ItemDescriptionData> items_list) {
         this.items_list = items_list;
     }
 
@@ -62,7 +65,7 @@ public class OP1Adapter extends RecyclerView.Adapter<OP1Adapter.OP1ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull OP1ViewHolder holder, int position) {
-        ItemDescription current_item = items_list.get(position);
+        ItemDescriptionData current_item = items_list.get(position);
 
         holder.item_name.setText(current_item.getName());
         holder.item_brand.setText(current_item.getBrand());
@@ -74,7 +77,7 @@ public class OP1Adapter extends RecyclerView.Adapter<OP1Adapter.OP1ViewHolder> {
         return items_list.size();
     }
 
-    public void filterList(ArrayList<ItemDescription> filtered_list) {
+    public void filterList(ArrayList<ItemDescriptionData> filtered_list) {
         items_list = filtered_list;
         notifyDataSetChanged();
     }
