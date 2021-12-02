@@ -3,6 +3,7 @@ package com.example.b07_project;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ActionBar;
 import android.app.Notification;
@@ -20,6 +21,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.b07_project.Model.ItemData;
+import com.example.b07_project.Model.ItemDescriptionData;
+import com.example.b07_project.Model.ShopData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,9 +35,15 @@ public class StoreActivity extends AppCompatActivity {
 
     private final String PREF_NAME = "pref_name";
     private ArrayAdapter adapter;
-    private ArrayList<String> item_names = new ArrayList<>(Arrays.asList("item 1", "item 2", "item 3", "item 4", "item 5", "item 6"));
+    private ArrayList<ShopData> stores = new ArrayList<>(Arrays.asList(new ShopData("123", "Walmart",new ArrayList<>(Arrays.asList(new ItemDescriptionData("Hamburger", "MacDonalds", 3.99))))));
+    private ArrayList<String> item_names = new ArrayList<>();
+
+    //TODO firebase: pull the shopdata from the database
     private String store_name;
     private SharedPreferences store;
+    private RecyclerView recyclerView;
+    private OP1Adapter adapter1;
+    private RecyclerView.LayoutManager layout_manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +59,15 @@ public class StoreActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ListView item_list = (ListView) findViewById(R.id.item_list);
         EditText filter = (EditText) findViewById(R.id.item_search_bar);
+
+        for(ShopData s: stores){
+            if(s.getShop_name().equals(store_name)){
+                for(ItemDescriptionData i: s.getItems()){
+                    item_names.add(i.getName());
+                }
+            }
+        }
+
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, item_names);
 
         item_list.setAdapter(adapter);
