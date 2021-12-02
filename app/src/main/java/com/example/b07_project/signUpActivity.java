@@ -32,7 +32,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import encryption.MD5Encryption;
 
 public class signUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
