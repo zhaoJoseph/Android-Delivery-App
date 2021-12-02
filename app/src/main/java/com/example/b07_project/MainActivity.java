@@ -32,6 +32,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
+
+    @Override
+    public void onBackPressed(){
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null){
+            super.onBackPressed();
+        } // else do nothing
+    }
+
     public void launch_page(boolean IsCustomer){
         Intent intent;
         if(IsCustomer){
