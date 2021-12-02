@@ -19,11 +19,11 @@ public class OrderData {
     }
     public OrderData(){}
     public void SetOrderID(String s){orderID = s;}
-    public void setOrderStatus(Boolean b){isComplete = b;}
+    public void setisComplete(Boolean b){isComplete = b;}
 
     public String getOrderID() { return orderID;}
     public String GetOrdererID(){return orderBy;}
     public String GetShopOwnerID(){ return orderingFrom;}
     public List<ItemData> getItems(){return items;}
-    public Boolean getOrderStatus(Boolean b){return isComplete;}
+    public Boolean getisComplete(Boolean b){return isComplete;}
 }
