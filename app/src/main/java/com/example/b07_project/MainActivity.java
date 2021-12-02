@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
 
-        //TODO check if encryptedPassword matches with data in the firebase, if yes go into the next page
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

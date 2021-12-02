@@ -77,7 +77,7 @@ public class ItemActivity extends AppCompatActivity {
             this.finish();
         }
         if(amount == 0){
-
+            //TODO remove the item from the list in the firebase
         }
 
     }
