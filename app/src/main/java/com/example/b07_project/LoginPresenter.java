@@ -13,7 +13,21 @@ public class LoginPresenter implements Contract.presenter{
         this.model = model;
         this.view = view;
     }
+    @Override
+    public void launch_page_or_display_error(String output){
+        if (output.equals("customer")){
+         view.launch_page_customer(); }
+      else if (output.equals("owner")){
+         view.launch_page_owner();
+        }
 
+       else{
+            view.displayError(output);
+
+        }
+
+
+    }
 
     @Override
     public void attemptLogin(){
@@ -24,22 +38,12 @@ public class LoginPresenter implements Contract.presenter{
         String password = view.getPassword();
 
 
-        model.attemptLogin(email, password,view);
+        model.attemptLogin(email, password,this);
 
 
 
 
-//        if (loggingIn.equals("customer")){
-//            view.launch_page_customer();
-//        }
-//        else if (loggingIn.equals("owner")){
-//            view.launch_page_owner();
-//        }
-//
-//        else{
-//            view.displayError(loggingIn);
-//
-//        }
+
 
     }
 }

@@ -27,7 +27,7 @@ public class LoginModel implements Contract.model{
     }
 
     @Override
-    public void attemptLogin(String email, String password, Contract.View view){
+    public void attemptLogin(String email, String password, Contract.presenter pres){
 
 
         mAuth.signInWithEmailAndPassword(email, password)
@@ -43,10 +43,10 @@ public class LoginModel implements Contract.model{
                                     if(u != null){
 
                                         if (u.getIsCustomer()){
-                                            view.launch_page_customer();
+                                            pres.launch_page_or_display_error("customer");
                                         }
                                         else{
-                                            view.launch_page_owner();
+                                            pres.launch_page_or_display_error("owner");
                                         }
                                     }
 
@@ -54,7 +54,7 @@ public class LoginModel implements Contract.model{
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-                                    view.displayError("Error getting User Data");
+                                    pres.launch_page_or_display_error("Error getting User Data");
                                     mAuth.signOut();
                                     return;
                                 }
@@ -65,10 +65,11 @@ public class LoginModel implements Contract.model{
                             try {
 
                                 String text = "Authentication failed." + task.getException().getMessage();
-                                view.displayError(text);
+                                pres.launch_page_or_display_error(text);
                             }catch (NullPointerException e){
 
-                                view.displayError("Authentication failed.");
+                                pres.launch_page_or_display_error("Authentication failed");
+
                             }
 
                         }
