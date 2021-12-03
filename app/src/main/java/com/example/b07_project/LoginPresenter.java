@@ -25,20 +25,19 @@ public class LoginPresenter implements Contract.presenter{
 
         String loggingIn = model.attemptLogin(email, password);
 
-        System.out.println(loggingIn);
 
 
-//        if (loggingIn.equals("customer")){
-//            view.launch_page_customer();
-//        }
-//        else if (loggingIn.equals("owner")){
-//            view.launch_page_owner();
-//        }
-//
-//        else{
-//            view.displayError(loggingIn);
-//
-//        }
+        if (loggingIn.equals("customer")){
+            view.launch_page_customer();
+        }
+        else if (loggingIn.equals("owner")){
+            view.launch_page_owner();
+        }
+
+        else{
+            view.displayError(loggingIn);
+
+        }
 
     }
 }
