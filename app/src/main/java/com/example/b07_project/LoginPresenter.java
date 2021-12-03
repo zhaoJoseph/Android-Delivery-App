@@ -14,18 +14,19 @@ public class LoginPresenter implements Contract.presenter{
         this.view = view;
     }
 
+
     @Override
     public void attemptLogin(){
 
-        view.displayError("hi");
+
 
         String email = view.getEmail();
         String password = view.getPassword();
 
 
-        String loggingIn = model.attemptLogin(email, password);
+        model.attemptLogin(email, password,view);
 
-        System.out.println(loggingIn);
+
 
 
 //        if (loggingIn.equals("customer")){

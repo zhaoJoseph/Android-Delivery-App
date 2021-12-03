@@ -11,7 +11,7 @@ public interface Contract {
     }
 
     public interface model{
-        public String attemptLogin(String email, String password);
+        public void attemptLogin(String email, String password, Contract.View view);
     }
 
     public interface presenter{

@@ -27,11 +27,9 @@ public class LoginModel implements Contract.model{
     }
 
     @Override
-    public String attemptLogin(String email, String password){
+    public void attemptLogin(String email, String password, Contract.View view){
 
 
-
-        final String[] text = new String[1];
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -45,10 +43,10 @@ public class LoginModel implements Contract.model{
                                     if(u != null){
 
                                         if (u.getIsCustomer()){
-                                            text[0] = "customer";
+                                            view.launch_page_customer();
                                         }
                                         else{
-                                            text[0] = "owner";
+                                            view.launch_page_owner();
                                         }
                                     }
 
@@ -56,8 +54,7 @@ public class LoginModel implements Contract.model{
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-                                    text[0] = "Error getting User Data";
-
+                                    view.displayError("Error getting User Data");
                                     mAuth.signOut();
                                     return;
                                 }
@@ -67,11 +64,11 @@ public class LoginModel implements Contract.model{
 
                             try {
 
-                                text[0] = "Authentication failed." + task.getException().getMessage();
-
+                                String text = "Authentication failed." + task.getException().getMessage();
+                                view.displayError(text);
                             }catch (NullPointerException e){
 
-                                text[0] = "Authentication failed.";
+                                view.displayError("Authentication failed.");
                             }
 
                         }
@@ -80,7 +77,7 @@ public class LoginModel implements Contract.model{
 
 
 
-        return text[0];
+
     }
 
 
