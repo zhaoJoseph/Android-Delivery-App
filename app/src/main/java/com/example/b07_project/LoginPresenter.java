@@ -17,27 +17,28 @@ public class LoginPresenter implements Contract.presenter{
     @Override
     public void attemptLogin(){
 
-        view.displayError("hi");
-
         String email = view.getEmail();
         String password = view.getPassword();
 
+        model.attemptLogin(email, password, this);
 
-        String loggingIn = model.attemptLogin(email, password);
+    }
 
+    @Override
+    public void launch_page_or_display_error(String output) {
 
-
-        if (loggingIn.equals("customer")){
+        if (output.equals("customer")){
             view.launch_page_customer();
         }
-        else if (loggingIn.equals("owner")){
+        else if (output.equals("owner")){
             view.launch_page_owner();
         }
 
         else{
-            view.displayError(loggingIn);
+            view.displayError(output);
 
         }
+
 
     }
 }
