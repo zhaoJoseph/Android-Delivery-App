@@ -27,11 +27,9 @@ public class LoginModel implements Contract.model{
     }
 
     @Override
-    public String attemptLogin(String email, String password){
+    public void attemptLogin(String email, String password, Contract.presenter pres){
 
 
-
-        final String[] text = new String[1];
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -45,10 +43,10 @@ public class LoginModel implements Contract.model{
                                     if(u != null){
 
                                         if (u.getIsCustomer()){
-                                            text[0] = "customer";
+                                            pres.launch_page_or_display_error("customer");
                                         }
                                         else{
-                                            text[0] = "owner";
+                                            pres.launch_page_or_display_error("owner");
                                         }
                                     }
 
@@ -56,8 +54,7 @@ public class LoginModel implements Contract.model{
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-                                    text[0] = "Error getting User Data";
-
+                                    pres.launch_page_or_display_error("Error getting User Data");
                                     mAuth.signOut();
                                     return;
                                 }
@@ -67,11 +64,12 @@ public class LoginModel implements Contract.model{
 
                             try {
 
-                                text[0] = "Authentication failed." + task.getException().getMessage();
-
+                                String text = "Authentication failed." + task.getException().getMessage();
+                                pres.launch_page_or_display_error(text);
                             }catch (NullPointerException e){
 
-                                text[0] = "Authentication failed.";
+                                pres.launch_page_or_display_error("Authentication failed");
+
                             }
 
                         }
@@ -80,7 +78,7 @@ public class LoginModel implements Contract.model{
 
 
 
-        return text[0];
+
     }
 
 

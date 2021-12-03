@@ -11,10 +11,11 @@ public interface Contract {
     }
 
     public interface model{
-        public String attemptLogin(String email, String password);
+        public void attemptLogin(String email, String password, Contract.presenter pres);
     }
 
     public interface presenter{
         public void attemptLogin();
+        public void launch_page_or_display_error(String output);
     }
 }
