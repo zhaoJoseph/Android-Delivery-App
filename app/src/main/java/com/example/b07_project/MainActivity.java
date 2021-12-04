@@ -39,7 +39,13 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
 
 
     }
-
+    @Override
+    public void onBackPressed(){
+        if (mAuth.getCurrentUser()!=null)
+            super.onBackPressed();
+        //prevent users from going back to pages where you'd need to
+        //be logged in
+    }
 
     @Override
     public void launch_page_customer(){
