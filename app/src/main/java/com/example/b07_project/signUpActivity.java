@@ -105,10 +105,6 @@ public class signUpActivity extends AppCompatActivity {
         }
 
 
-        //TODO check if email is already in the account
-
-
-
         if (!password.equals(confirmPassword) ){
             confirmPasswordText.setError("does not equal password");
             confirmPasswordText.setText("");

@@ -45,6 +45,42 @@ public class LoginPresenterTest {
     }
 
     @Test
+    public void testNoInputLogin() throws Exception {
+
+        String Email = "";
+        String password = "";
+
+        when(view.getEmail()).thenReturn(Email);
+        when(view.getPassword()).thenReturn(password);
+
+        LoginPresenter presenter = new LoginPresenter(model, view);
+
+        presenter.attemptLogin();
+
+        verify(model, times(0)).attemptLogin(Email, password, presenter);
+        verify(view, times(1)).displayEmailError(anyString());
+    }
+
+    @Test
+    public void testNoPasswordInputLogin() throws Exception {
+
+        String Email = "abc";
+        String password = "";
+
+        when(view.getEmail()).thenReturn(Email);
+        when(view.getPassword()).thenReturn(password);
+
+        LoginPresenter presenter = new LoginPresenter(model, view);
+
+        presenter.attemptLogin();
+
+        verify(model, times(0)).attemptLogin(Email, password, presenter);
+        verify(view, times(1)).displayPasswordError(anyString());
+    }
+
+
+
+    @Test
     public void test_launch_page_or_display_error() throws Exception{
 
         String errorMessage = "Error Message";

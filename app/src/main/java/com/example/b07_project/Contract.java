@@ -8,6 +8,8 @@ public interface Contract {
         public void displayError(String errorMessage);
         public void launch_page_customer();
         public void launch_page_owner();
+        public void displayEmailError(String errorMessage);
+        public void displayPasswordError(String errorMessage);
     }
 
     public interface model{

@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
         finish();
     }
 
+
+
     /*
     public void launch_page(){
         Intent intent;
@@ -158,4 +160,18 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
         Toast.makeText(MainActivity.this, errorMessage,
                 Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void displayEmailError(String errorMessage) {
+        TextView emailText = (TextView) findViewById(R.id.userEmailAddress);
+        emailText.setError(errorMessage);
+    }
+
+    @Override
+    public void displayPasswordError(String errorMessage) {
+        TextView passwordText = (TextView) findViewById(R.id.userPassword);
+        passwordText.setError(errorMessage);
+    }
+
+
 }

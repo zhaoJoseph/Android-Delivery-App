@@ -20,6 +20,19 @@ public class LoginPresenter implements Contract.presenter{
         String email = view.getEmail();
         String password = view.getPassword();
 
+        //firebase crashes the app if the inputs are null
+        if(email.length() == 0){
+            view.displayEmailError("email can not be empty");
+            return;
+        }
+
+        //firebase crashes the app if the inputs are null
+        if (password.length() == 0){
+            view.displayPasswordError("password can not be empty");
+            return;
+        }
+
+
         model.attemptLogin(email, password, this);
 
     }
