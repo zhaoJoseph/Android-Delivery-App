@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
 
     }
 
+
     @Override
     public void launch_page_customer(){
         Intent intent = new Intent(this, StoreListActivity.class);

@@ -47,6 +47,7 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="Stores">Stores</string>
+    <string name="Store">Store</string>
     <string name="Orders">Orders</string>
     <string name="Logout">Logout</string>
     <string-array name="account_type">

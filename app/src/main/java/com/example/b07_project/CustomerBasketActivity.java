@@ -11,6 +11,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.b07_project.Model.ItemData;
+import com.example.b07_project.Model.ItemDescriptionData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,8 +29,9 @@ public class CustomerBasketActivity extends AppCompatActivity {
 
     private TableLayout table;
     private TextView price;
-    private final ArrayList<Item> orderList = new ArrayList<>(Arrays.asList(new Item(new ItemDescription("Chips",1234,"Ahoy",3.99),2)));
+    private final ArrayList<ItemData> orderList = new ArrayList<>(Arrays.asList(new ItemData(new ItemDescriptionData("Cookie","Chips Ahoy", 3.99),2)));
     private final double Totalprice = 3.99;
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     //Todo FIREBASE: access the order items that are not in a finalized order
 
     @Override
@@ -65,12 +68,12 @@ public class CustomerBasketActivity extends AppCompatActivity {
 
     public void addItems(){
         table = (TableLayout) findViewById(R.id.items_table);
-        for(Item i: orderList){
+        for(ItemData i: orderList){
             TableRow row = new TableRow(this);
             itemDisplay item = new itemDisplay(this,null);
             row.addView(item);
-            item.setName(i.getItemDescription().getName());
-            item.setBrand(i.getItemDescription().getBrand());
+            item.setName(i.getData().getName());
+            item.setBrand(i.getData().getBrand());
             item.setQuantity(i.getQuantity());
             table.addView(row);
         }
@@ -81,6 +84,7 @@ public class CustomerBasketActivity extends AppCompatActivity {
 
     public void complete_order(View view){
         //TODO firebase: finalize the order
+
         finish();
     }
 

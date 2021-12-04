@@ -17,18 +17,28 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.b07_project.Model.ItemData;
+import com.example.b07_project.Model.ItemDescriptionData;
+import com.example.b07_project.Model.ShopData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import AppClasses.Item;
 
 public class StoreListActivity extends AppCompatActivity{
 
     private final String PREF_NAME = "pref_name";
     private ArrayAdapter adapter;
-    private ArrayList<String> store_names = new ArrayList<>(Arrays.asList("Store 1", "Store 2", "Store 3", "Store 4", "Store 5", "Store 6"));
+
+    private ArrayList<ShopData> shops= new ArrayList<>(Arrays.asList(new ShopData("123", "Walmart",new ArrayList<>(Arrays.asList(new ItemDescriptionData("Hamburger", "MacDonalds", 3.99))))));
+
+    private ArrayList<String> store_names = new ArrayList<>(Arrays.asList("Walmart"));
+    // TODO firebase: need to pull all shops from database and store in an arraylist and same for their names
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +79,13 @@ public class StoreListActivity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), StoreActivity.class);
-                intent.putExtra("store_name", (String)adapter.getItem(position));
+                String shopName = (String)adapter.getItem(position);
+                for(ShopData s: shops){
+                    if(s.getShop_name().equals(shopName)) {
+                        intent.putExtra("store_name", s.getShop_name());
+                        break;
+                    }
+                }
                 startActivity(intent);
 
             }

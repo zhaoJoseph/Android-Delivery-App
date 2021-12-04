@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.B07_project">
         <activity
+            android:name=".CustomerOrderIdActivity"
+            android:exported="false" />
+            />
+        <activity
+
             android:windowSoftInputMode="adjustPan"
             android:name=".CustomerOrderActivity"
             android:exported="false" />
@@ -41,6 +46,13 @@
         <activity
             android:name=".OP3Activity"
             android:parentActivityName=".OP1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".OP4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".OP5Activity"
+            android:parentActivityName=".OP4Activity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
