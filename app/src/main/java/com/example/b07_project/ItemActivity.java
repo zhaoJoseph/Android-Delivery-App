@@ -10,16 +10,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.b07_project.Model.ItemDescriptionData;
+import com.example.b07_project.Model.ShopData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 public class ItemActivity extends AppCompatActivity {
     private Button ordered;
     private Button add;
     private Button subtract;
     private TextView quantity;
+    private TextView itemName;
+    private TextView itemPrice;
+    private TextView itemBrand;
     private int amount =0;
+    private ArrayList<ShopData> shopItems = new ArrayList<>();
+    //TODO firebase: access the stores in the database
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +42,26 @@ public class ItemActivity extends AppCompatActivity {
         add = (Button)findViewById(R.id.add_amount);
         subtract = (Button)findViewById(R.id.remove_amount);
         quantity = (TextView) findViewById(R.id.quant);
+
+        itemName = (TextView) findViewById(R.id.item_name);
+        itemBrand = (TextView) findViewById(R.id.item_brand);
+        itemPrice = (TextView) findViewById(R.id.item_cost);
+        String shopName = getIntent().getExtras().getString("store_item");
+        String item = getIntent().getExtras().getString("item_name");
+        String brand = "";
+        double cost = 0.0;
+        for(ShopData s: shopItems){
+            if(s.getShop_name().equals(shopName)){
+                        brand = s.getItems().get(s.getItems().indexOf(new ItemDescriptionData(item, "",0.0))).getBrand();
+                        cost = s.getItems().get(s.getItems().indexOf(new ItemDescriptionData(item, "",0.0))).getPrice();
+                        break;
+
+            }
+        }
+
+        itemName.setText(item);
+        itemPrice.setText(Double.toString(cost));
+        itemBrand.setText(brand);
 
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         nav.getMenu().setGroupCheckable(0, false,true);
@@ -68,6 +99,7 @@ public class ItemActivity extends AppCompatActivity {
                 amount--;
             }
         }
+
         quantity.setText(Integer.toString(amount));
     }
 
