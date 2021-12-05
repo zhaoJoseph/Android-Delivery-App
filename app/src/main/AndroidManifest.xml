@@ -19,6 +19,9 @@
             android:name=".CustomerOrderActivity"
             android:exported="false" />
         <activity
+            android:name=".CustomerBasketActivity"
+            android:exported="false"/>
+        <activity
             android:windowSoftInputMode="adjustPan"
             android:name=".StoreListActivity"
             android:exported="false" />

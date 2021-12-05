@@ -50,6 +50,7 @@
     <string name="Store">Store</string>
     <string name="Orders">Orders</string>
     <string name="Logout">Logout</string>
+    <string name="Your_Order">Your Order</string>
     <string-array name="account_type">
         <item>Customer Account</item>
         <item>Owner Account</item>

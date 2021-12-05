@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -59,6 +60,7 @@ public class StoreActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ListView item_list = (ListView) findViewById(R.id.item_list);
         EditText filter = (EditText) findViewById(R.id.item_search_bar);
+
 
         for(ShopData s: stores){
             if(s.getShop_name().equals(store_name)){
@@ -132,6 +134,14 @@ public class StoreActivity extends AppCompatActivity {
         });
 
     }
+
+    public void openBasket(View view){
+        Intent basket = new Intent(StoreActivity.this, CustomerBasketActivity.class);
+        basket.putExtra("store", store_name);
+        store.edit().putString("pref_store", store_name).commit();
+        startActivity(basket);
+    }
+
 
     @Override
     public void onBackPressed(){

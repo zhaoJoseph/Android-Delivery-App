@@ -29,5 +29,5 @@ public class OrderData {
     public String GetOrderBy(){return orderBy;}
     public String GetOrderingFrom(){ return orderingFrom;}
     public List<ItemData> GetItems(){return items;}
-    public Boolean GetIsComplete(Boolean b){return isComplete;}
+    public Boolean GetIsComplete(){return isComplete;}
 }

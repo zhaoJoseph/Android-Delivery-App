@@ -34,7 +34,7 @@ public class CustomerBasketActivity extends AppCompatActivity {
     private TableLayout table;
     private TextView price;
     private final ArrayList<OrderData> orderList = new ArrayList<>(Arrays.asList(new OrderData("Walmart", "John",new ArrayList<ItemData>(Arrays.asList(new ItemData(new ItemDescriptionData("Cookie","Chips Ahoy",3.99),5))))));
-    private OrderData order;
+    private OrderData order = null;
     private final double Totalprice = 3.99;
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     //Todo FIREBASE: access the customers baskets and put all orders in orderlist
@@ -45,8 +45,8 @@ public class CustomerBasketActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_basket);
         String shop_name = getIntent().getExtras().getString("store");
         for(OrderData s: orderList){
-            if(s.GetShopOwnerID().equals(shop_name) && !s.getisComplete()){
-                order = new OrderData(s.GetShopOwnerID(),s.GetOrdererID(), s.getItems());
+            if(s.GetOrderingFrom().equals(shop_name) && !s.GetIsComplete()){
+                order = new OrderData(s.GetOrderingFrom(),s.GetOrderID(), s.GetItems());
                 break;
             }
         }
@@ -82,12 +82,12 @@ public class CustomerBasketActivity extends AppCompatActivity {
 
     public void addItems(){
         table = (TableLayout) findViewById(R.id.items_table);
-        for(ItemData i: order.getItems()){
+        for(ItemData i: order.GetItems()){
             TableRow row = new TableRow(this);
             itemDisplay item = new itemDisplay(this,null);
             row.addView(item);
             item.setName(i.getData().getName());
-            item.setPrice(i.getData().getPrice());
+            item.setBrand(i.getData().getBrand());
             item.setQuantity(i.getQuantity());
             table.addView(row);
         }
