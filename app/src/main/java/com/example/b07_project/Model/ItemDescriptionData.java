@@ -1,5 +1,7 @@
 package com.example.b07_project.Model;
 
+import com.google.firebase.database.Exclude;
+
 public class ItemDescriptionData {
     private String name;
     private String brand;
@@ -9,7 +11,7 @@ public class ItemDescriptionData {
         this.brand = Brand;
         this.price = price;
     }
-
+    @Exclude
     @Override
     public boolean equals(Object O){
         if(O == null)
@@ -20,6 +22,11 @@ public class ItemDescriptionData {
         if((i.getName().equals(this.getName())))
             return true;
         return false;
+    }
+    @Exclude
+    @Override
+    public int hashCode(){
+        return name.hashCode();
     }
 
     public ItemDescriptionData(){}

@@ -61,7 +61,7 @@ public class OP3Activity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         ShopData my_shop = snapshot.getValue(ShopData.class);
-                        Toast.makeText(OP3Activity.this,my_shop.getItems().get(position).getName(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(OP3Activity.this,my_shop.getItems().get(position).getName(),Toast.LENGTH_LONG).show();
                         List<ItemDescriptionData> temp = new ArrayList<>();
                         int counter =0;
                         for(ItemDescriptionData i:my_shop.getItems()){

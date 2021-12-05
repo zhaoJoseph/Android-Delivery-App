@@ -57,7 +57,7 @@ public class OP4Adapter extends RecyclerView.Adapter<OP4Adapter.OP4ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull OP4ViewHolder holder, int position) {
         OrderData current_order = orders_list.get(position);
-        holder.order_id.setText(current_order.getOrderID());
+        holder.order_id.setText(current_order.GetOrderID());
     }
 
     @Override
