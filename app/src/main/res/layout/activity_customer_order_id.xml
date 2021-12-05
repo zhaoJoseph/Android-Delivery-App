@@ -2,146 +2,168 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout11"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CustomerOrderIdActivity">
 
-    <TextView
-        android:id="@+id/order_id_title"
-        android:layout_width="224dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="36dp"
-        android:gravity="center"
-        android:text="@string/order_id"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/shop_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/shop_name"
-        android:layout_width="321dp"
-        android:layout_height="46dp"
-        android:gravity="center_vertical|start"
-        android:text="@string/Shop"
-        app:layout_constraintBottom_toTopOf="@+id/status_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_id_title"
-        app:layout_constraintVertical_bias="0.292" />
-
-    <TextView
-        android:id="@+id/status_name"
-        android:layout_width="323dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="1dp"
-        android:gravity="center_vertical|start"
-        android:text="@string/Status"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shop_name" />
-
-    <ScrollView
-        android:id="@+id/scrollView4"
-        android:layout_width="409dp"
-        android:layout_height="270dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/recieptPrice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        tools:ignore="SpeakableTextPresentCheck">
-
-
-        <TableLayout
-            android:id="@+id/table_order"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-
-        </TableLayout>
-    </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="412dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="9dp"
-        android:background="#a4c639"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/scrollView4"
-        app:layout_constraintTop_toBottomOf="@+id/status_name">
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="49dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/Item"
-            android:textColor="#004D40" />
-
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="0dp"
-            android:layout_marginBottom="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/Price"
-            android:textColor="#004D40" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/Quantity"
-            android:textColor="#004D40" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/recieptPrice"
-        android:layout_width="154dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="173dp"
-        android:layout_marginEnd="181dp"
-        android:layout_marginBottom="4dp"
-        android:gravity="center"
-        android:textSize="29sp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="666dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout13"
+            android:layout_width="411dp"
+            android:layout_height="111dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/order_id_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/order_id"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout12" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/order_id_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/status_name"
+                    android:layout_width="188dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical|start"
+                    android:text="@string/Status"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/shop_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/shop_name"
+                    android:layout_width="215dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="1dp"
+                    android:gravity="center"
+                    android:text="@string/Shop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/status_name"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#a4c639"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="49dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Item"
+                android:textColor="#004D40" />
+
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Price"
+                android:textColor="#004D40" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/Quantity"
+                android:textColor="#004D40" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView4"
+            android:layout_width="414dp"
+            android:layout_height="408dp"
+            app:layout_constraintBottom_toTopOf="@+id/receiptPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            tools:ignore="SpeakableTextPresentCheck">
+
+
+            <TableLayout
+                android:id="@+id/table_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+
+            </TableLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/receiptPrice"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_width="412dp"
+        android:layout_height="63dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recieptPrice"
-        app:layout_constraintVertical_bias="0.995"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout7"
         app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
