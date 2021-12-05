@@ -64,7 +64,16 @@ public class OP2Activity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         ShopData my_shop = snapshot.getValue(ShopData.class);
                         if(my_shop.getItems()!=null)
-                        {my_shop.getItems().add(new ItemDescriptionData(item_name,brand_name,Double.parseDouble(price)));mDatabase_Shop_User.setValue(my_shop);}
+                        {
+                            if(!my_shop.getItems().contains(new ItemDescriptionData(item_name,"",0.0)))
+                            {
+                                my_shop.getItems().add(new ItemDescriptionData(item_name, brand_name, Double.parseDouble(price)));
+                                mDatabase_Shop_User.setValue(my_shop);
+                            }
+                            else{
+                                Toast.makeText(OP2Activity.this, "Shop already contains this item", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                         else{
                             mDatabase_Shop_User.child("items").child("0").setValue(new ItemDescriptionData(item_name,brand_name,Double.parseDouble(price)));
                         }

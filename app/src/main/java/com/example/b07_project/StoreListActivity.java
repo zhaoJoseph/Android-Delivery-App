@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.b07_project.Model.ItemData;
 import com.example.b07_project.Model.ItemDescriptionData;
@@ -23,35 +24,79 @@ import com.example.b07_project.Model.ShopData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import AppClasses.Item;
 
 public class StoreListActivity extends AppCompatActivity{
-
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
     private final String PREF_NAME = "pref_name";
     private ArrayAdapter adapter;
 
-    private ArrayList<ShopData> shops= new ArrayList<>(Arrays.asList(new ShopData("123", "Walmart",new ArrayList<>(Arrays.asList(new ItemDescriptionData("Hamburger", "MacDonalds", 3.99))))));
+    private ArrayList<ShopData> shops= new ArrayList<>();
 
-    private ArrayList<String> store_names = new ArrayList<>(Arrays.asList("Walmart"));
+    private ArrayList<String> store_names = new ArrayList<>();
     // TODO firebase: need to pull all shops from database and store in an arraylist and same for their names
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storelist);
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         ListView store_list = (ListView) findViewById(R.id.store_items);
         EditText filter = (EditText) findViewById(R.id.search_bar);
+
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, store_names);
 
         getSharedPreferences(PREF_NAME,0).edit().clear().commit();
-
-
         store_list.setAdapter(adapter);
+
+        store_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), StoreActivity.class);
+                String shopName = (String)adapter.getItem(position);
+                for(ShopData s: shops){
+                    if(s.getShop_name().equals(shopName)) {
+                        intent.putExtra("store_name", s.getShop_name());
+                        intent.putExtra("owner_id",s.getOwnerID());
+                        break;
+                    }
+                }
+                startActivity(intent);
+
+            }
+        });
+        mDatabase.child("shops").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                shops.clear();
+                store_names.clear();
+                for(DataSnapshot children: snapshot.getChildren()){
+                    ShopData s = children.getValue(ShopData.class);
+                    shops.add(s);
+                    store_names.add(s.getShop_name());
+                    //Toast.makeText(StoreListActivity.this, s.getShop_name(), Toast.LENGTH_SHORT).show();
+                }
+                adapter = new ArrayAdapter<String>(StoreListActivity.this, android.R.layout.simple_list_item_1, store_names);
+                store_list.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         filter.addTextChangedListener(new TextWatcher() {
 
@@ -75,21 +120,7 @@ public class StoreListActivity extends AppCompatActivity{
 
         });
 
-        store_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), StoreActivity.class);
-                String shopName = (String)adapter.getItem(position);
-                for(ShopData s: shops){
-                    if(s.getShop_name().equals(shopName)) {
-                        intent.putExtra("store_name", s.getShop_name());
-                        break;
-                    }
-                }
-                startActivity(intent);
 
-            }
-        });
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

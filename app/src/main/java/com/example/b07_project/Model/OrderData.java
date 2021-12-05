@@ -1,6 +1,8 @@
 package com.example.b07_project.Model;
 
 
+import com.google.firebase.database.Exclude;
+
 import java.util.List;
 import java.util.Map;
 
@@ -18,12 +20,14 @@ public class OrderData {
         this.isComplete = false;
     }
     public OrderData(){}
+    @Exclude
     public void SetOrderID(String s){orderID = s;}
-    public void setisComplete(Boolean b){isComplete = b;}
+    @Exclude
+    public void SetIsComplete(Boolean b){isComplete = b;}
 
-    public String getOrderID() { return orderID;}
-    public String GetOrdererID(){return orderBy;}
-    public String GetShopOwnerID(){ return orderingFrom;}
-    public List<ItemData> getItems(){return items;}
-    public Boolean getisComplete(Boolean b){return isComplete;}
+    public String GetOrderID() { return orderID;}
+    public String GetOrderBy(){return orderBy;}
+    public String GetOrderingFrom(){ return orderingFrom;}
+    public List<ItemData> GetItems(){return items;}
+    public Boolean GetIsComplete(Boolean b){return isComplete;}
 }

@@ -49,14 +49,14 @@ public class OP5Activity extends AppCompatActivity {
         temp_build_orders_list();
 
         TextView owner = findViewById(R.id.OP5_order_id);
-        owner.setText(orders_list.get(position).getOrderID());
+        owner.setText(orders_list.get(position).GetOrderID());
 
         TextView customer = findViewById(R.id.OP5_customer);
-        customer.setText(orders_list.get(position).GetOrdererID());
+        customer.setText(orders_list.get(position).GetOrderBy());
 
         recycler_view = findViewById(R.id.OP5RecyclerView);
         layout_manager = new LinearLayoutManager(this);
-        adapter = new OP5Adapter(orders_list.get(position).getItems());
+        adapter = new OP5Adapter(orders_list.get(position).GetItems());
 
         recycler_view.setLayoutManager(layout_manager);
         recycler_view.setAdapter(adapter);

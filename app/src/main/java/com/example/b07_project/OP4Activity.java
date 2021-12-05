@@ -155,7 +155,7 @@ public class OP4Activity extends AppCompatActivity {
         List<OrderData> filtered_list = new ArrayList<>();
 
         for (OrderData order : orders_list) {
-            if (order.getOrderID().toLowerCase().contains(text.toLowerCase())) {
+            if (order.GetOrderID().toLowerCase().contains(text.toLowerCase())) {
                 filtered_list.add(order);
             }
         }
