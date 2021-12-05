@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -98,6 +99,7 @@ public class StoreActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(StoreActivity.this, ItemActivity.class);
+                intent.putExtra("store_item", store_name);
                 intent.putExtra("item_name", (String)adapter.getItem(position));
                 store.edit().putString("pref_store", store_name).commit();
                 startActivity(intent);
@@ -122,6 +124,7 @@ public class StoreActivity extends AppCompatActivity {
                         startActivity(orderIntent);
                         break;
                     case R.id.navigation_logout:
+                        finish();
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(StoreActivity.this, MainActivity.class);
                         startActivity(intent);
@@ -132,6 +135,14 @@ public class StoreActivity extends AppCompatActivity {
         });
 
     }
+
+    public void openBasket(View view){
+        Intent intent = new Intent(StoreActivity.this, CustomerBasketActivity.class);
+        store.edit().putString("pref_store", store_name).commit();
+        intent.putExtra("store" ,store_name);
+        startActivity(intent);
+    }
+
 
     @Override
     public void onBackPressed(){

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.service.voice.VoiceInteractionSession;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TableLayout;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.b07_project.Model.ItemData;
 import com.example.b07_project.Model.ItemDescriptionData;
+import com.example.b07_project.Model.OrderData;
+import com.example.b07_project.Model.ShopData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,21 +27,32 @@ import java.util.Arrays;
 
 import AppClasses.Item;
 import AppClasses.ItemDescription;
+import AppClasses.Shop;
 
 public class CustomerBasketActivity extends AppCompatActivity {
 
     private TableLayout table;
     private TextView price;
-    private final ArrayList<ItemData> orderList = new ArrayList<>(Arrays.asList(new ItemData(new ItemDescriptionData("Cookie","Chips Ahoy", 3.99),2)));
+    private final ArrayList<OrderData> orderList = new ArrayList<>(Arrays.asList(new OrderData("Walmart", "John",new ArrayList<ItemData>(Arrays.asList(new ItemData(new ItemDescriptionData("Cookie","Chips Ahoy",3.99),5))))));
+    private OrderData order;
     private final double Totalprice = 3.99;
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    //Todo FIREBASE: access the order items that are not in a finalized order
+    //Todo FIREBASE: access the customers baskets and put all orders in orderlist
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_basket);
-        addItems();
+        String shop_name = getIntent().getExtras().getString("store");
+        for(OrderData s: orderList){
+            if(s.GetShopOwnerID().equals(shop_name) && !s.getisComplete()){
+                order = new OrderData(s.GetShopOwnerID(),s.GetOrdererID(), s.getItems());
+                break;
+            }
+        }
+        if(order != null) {
+            addItems();
+        }
 
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
@@ -68,12 +82,12 @@ public class CustomerBasketActivity extends AppCompatActivity {
 
     public void addItems(){
         table = (TableLayout) findViewById(R.id.items_table);
-        for(ItemData i: orderList){
+        for(ItemData i: order.getItems()){
             TableRow row = new TableRow(this);
             itemDisplay item = new itemDisplay(this,null);
             row.addView(item);
             item.setName(i.getData().getName());
-            item.setBrand(i.getData().getBrand());
+            item.setPrice(i.getData().getPrice());
             item.setQuantity(i.getQuantity());
             table.addView(row);
         }
