@@ -3,6 +3,7 @@ package com.example.b07_project;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -24,19 +25,22 @@ public class itemDisplay extends LinearLayout {
 
     public void setName(String name){
         textName = (TextView) findViewById(R.id.display_name);
-        textName.setTextSize(30);
+        textName.setTextSize(20);
+        textName.setGravity(Gravity.CENTER);
         textName.setText(name);
     }
 
     public void setBrand(String brand){
         textBrand = (TextView)  findViewById(R.id.display_brand);
-        textBrand.setTextSize(30);
+        textBrand.setGravity(Gravity.CENTER);
+        textBrand.setTextSize(20);
         textBrand.setText(brand);
     }
 
     public void setQuantity(int quantity){
         textQuantity = (TextView) findViewById(R.id.display_cost);
-        textQuantity.setTextSize(30);
+        textQuantity.setGravity(Gravity.CENTER);
+        textQuantity.setTextSize(20);
         textQuantity.setText(Integer.toString(quantity));
     }
 
