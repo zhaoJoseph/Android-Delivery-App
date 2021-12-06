@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
 
     }
     @Override
+    public void onStart(){
+        super.onStart();
+        if(mAuth.getCurrentUser()!=null)
+            mAuth.signOut();
+    }
+    @Override
     public void onBackPressed(){
         if (mAuth.getCurrentUser()!=null)
             super.onBackPressed();

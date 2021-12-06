@@ -9,7 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.b07_project.Model.ItemData;
 import com.example.b07_project.Model.ItemDescriptionData;
 import com.example.b07_project.Model.OrderData;
 import com.example.b07_project.Model.ShopData;
@@ -25,6 +27,9 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
+
+
 
 public class ItemActivity extends AppCompatActivity {
     private Button ordered;
@@ -48,7 +53,6 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         ordered = (Button)findViewById(R.id.order_button);
         add = (Button)findViewById(R.id.add_amount);
@@ -58,10 +62,12 @@ public class ItemActivity extends AppCompatActivity {
         itemName = (TextView) findViewById(R.id.item_name);
         itemBrand = (TextView) findViewById(R.id.item_brand);
         itemPrice = (TextView) findViewById(R.id.item_cost);
-         store_id = getIntent().getExtras().getString("store_id");
-         item = getIntent().getExtras().getString("item_name");
-         brand = getIntent().getExtras().getString("brand");
-         price = getIntent().getExtras().getString("price");
+        store_id = getIntent().getExtras().getString("store_id");
+        item = getIntent().getExtras().getString("item_name");
+        brand = getIntent().getExtras().getString("brand");
+        price = getIntent().getExtras().getString("price");
+        if(store_id!=null)
+            mDatabase = FirebaseDatabase.getInstance().getReference().child("basket").child(mAuth.getCurrentUser().getUid()).child(store_id);
 
 
 
@@ -100,7 +106,7 @@ public class ItemActivity extends AppCompatActivity {
 
     public void edit_quantity(View v){
         if(v == add){
-                amount++;
+            amount++;
         }else if(v == subtract){
             if(amount > 0){
                 amount--;
@@ -111,17 +117,48 @@ public class ItemActivity extends AppCompatActivity {
     }
 
     public void added_to_order(View v){
-       //add to order
-        if(amount != 0) {
-            if(store_id!=null)
-            mDatabase.child("basket").child(mAuth.getCurrentUser().getUid()).child(store_id).addListenerForSingleValueEvent(new ValueEventListener() {
+        //add to order
+
+        ItemData d = new ItemData(new ItemDescriptionData(item,brand,Double.parseDouble(price)),amount);
+
+        if(store_id!=null)
+            mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot==null){
-                        //create new order and add to it
-
+                    OrderData o = snapshot.getValue(OrderData.class);
+                    if(o==null||o.getItems()==null){
+                        //no order structure or order has no items
+                        if(amount!=0) {
+                            List<ItemData> i = new ArrayList<>();
+                            i.add(d);
+                            OrderData new_order = new OrderData(mAuth.getCurrentUser().getUid(), store_id, i);
+                            mDatabase.setValue(new_order);
+                        }
                     }else{
-                        //add to existing order
+                        //order has no instance of item d
+                        if(!o.getItems().contains(d)){
+                            if(amount!=0) {
+                                o.getItems().add(d);
+                                mDatabase.setValue(o);
+                            }
+                        }
+                        else{
+                            //order has an instance of item d
+                            Toast.makeText(ItemActivity.this, "Basket already has this item, so changing amount ordered", Toast.LENGTH_SHORT).show();
+                            Integer index = o.getItems().indexOf(d);
+                            if(amount!=0)
+                            {//just change the value of the item
+                                mDatabase.child("items").child(index.toString()).setValue(d);
+                            }
+                            else{
+                                //delete existing instance
+                                List<ItemData> i = new ArrayList<>();
+                                for(ItemData I: o.getItems()){
+                                    if(!I.equals(d))i.add(I);
+                                }
+                                mDatabase.child("items").setValue(i);
+                            }
+                        }
                     }
                 }
 
@@ -130,11 +167,7 @@ public class ItemActivity extends AppCompatActivity {
 
                 }
             });
-            this.finish();
-        }
-        if(amount == 0){
-            //only remove if order exists and contains the item
-        }
+        this.finish();
 
     }
 

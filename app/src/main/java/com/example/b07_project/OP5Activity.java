@@ -18,9 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.b07_project.Model.ItemData;
 import com.example.b07_project.Model.ItemDescriptionData;
 import com.example.b07_project.Model.OrderData;
+import com.example.b07_project.Model.UserData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,43 +36,77 @@ public class OP5Activity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layout_manager;
     private Button mark_as_complete_button;
-    List<OrderData> orders_list;
-
+    private String order_id;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    private String customer_id;
+    //List<OrderData> orders_list;
+    List<ItemData> items_list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.owner_page_5);
-
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         // TEMP - Get position of Order from intent, then use position to get data from orders_list
         Intent intent = getIntent();
-        // order = intent.getParcelableExtra("order");
-        int position = intent.getIntExtra("position", 0);
-
-        // FIREBASE: CustomerID is passed from intent
-        // FIREBASE: Get Order based on that CustomerID
-
-        // Temporary - For testing purposes
-        temp_build_orders_list();
 
         TextView owner = findViewById(R.id.OP5_order_id);
-        owner.setText(orders_list.get(position).GetOrderID());
+        order_id = intent.getStringExtra("order_id");
+        owner.setText(intent.getStringExtra("order_id"));
+
 
         TextView customer = findViewById(R.id.OP5_customer);
-        customer.setText(orders_list.get(position).GetOrderBy());
+        customer_id = intent.getStringExtra("customer_id");
+        mDatabase.child("users").child(customer_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserData u = snapshot.getValue(UserData.class);
+                if(u!=null&&u.getIsCustomer())
+                customer.setText(u.getEmail());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         recycler_view = findViewById(R.id.OP5RecyclerView);
         layout_manager = new LinearLayoutManager(this);
-        adapter = new OP5Adapter(orders_list.get(position).GetItems());
-
         recycler_view.setLayoutManager(layout_manager);
+
+        adapter = new OP5Adapter(items_list);
         recycler_view.setAdapter(adapter);
+        mDatabase.child("orders").child(order_id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                items_list.clear();
+                OrderData o = snapshot.getValue(OrderData.class);
+                if(o!=null&&o.getItems()!=null){
+                    adapter = new OP5Adapter(o.getItems());
+                    recycler_view.setAdapter(adapter);
+                }else{
+                    adapter = new OP5Adapter(items_list);
+                    recycler_view.setAdapter(adapter);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         mark_as_complete_button = findViewById(R.id.OP5_mark_as_complete_button);
         mark_as_complete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // FIREBASE - Mark order as complete
-
+                FirebaseDatabase.getInstance().getReference().child("orders").child(order_id).child("isComplete").setValue(true);
                 finish();
             }
         });
@@ -98,7 +138,7 @@ public class OP5Activity extends AppCompatActivity {
         });
 
     }
-
+/*
     public void temp_build_orders_list() {
         orders_list = new ArrayList<>();
 
@@ -129,7 +169,7 @@ public class OP5Activity extends AppCompatActivity {
         items1.add(new ItemData(Ferrero, 999));
         items1.add(new ItemData(Aero, 4));
         OrderData order_1 = new OrderData("CustomerID1", "OwnerID1", items1);
-        order_1.SetOrderID("1-3509");
+        order_1.setOrderID("1-3509");
 
         List<ItemData> items2 = new ArrayList<>();
         items2.add(new ItemData(Mars, 45));
@@ -138,17 +178,18 @@ public class OP5Activity extends AppCompatActivity {
         items2.add(new ItemData(Godiva, 2));
         items2.add(new ItemData(Ferrero, 999));
         OrderData order_2 = new OrderData("CustomerID2", "OwnerID2", items2);
-        order_2.SetOrderID("2-9802");
+        order_2.setOrderID("2-9802");
 
         List<ItemData> items3 = new ArrayList<>();
         items3.add(new ItemData(Kitkat, 5));
         items3.add(new ItemData(Lindt, 9));
         OrderData order_3 = new OrderData("CustomerID3", "OwnerID3", items3);
-        order_3.SetOrderID("3-1098");
+        order_3.setOrderID("3-1098");
 
         orders_list.add(order_1);
         orders_list.add(order_2);
         orders_list.add(order_3);
-    }
+
+    } */
 
 }
