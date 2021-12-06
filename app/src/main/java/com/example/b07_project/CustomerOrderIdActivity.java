@@ -24,8 +24,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import AppClasses.Item;
-import AppClasses.ItemDescription;
+
 
 public class CustomerOrderIdActivity extends AppCompatActivity {
     private TableLayout order;
@@ -57,7 +56,8 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
         // also put the itemlist in orderList or replace with orderlist
         addItems();
         switcher = findViewById(R.id.orderView);
-        if(customerOrder.GetIsComplete())
+        customerOrder = new OrderData("","",new ArrayList<>());
+        if(customerOrder.getIsComplete())
             switcher.showNext();
 
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);

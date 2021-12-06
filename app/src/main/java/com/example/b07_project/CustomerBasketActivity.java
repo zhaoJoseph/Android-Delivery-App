@@ -25,9 +25,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import AppClasses.Item;
-import AppClasses.ItemDescription;
-import AppClasses.Shop;
+
 
 public class CustomerBasketActivity extends AppCompatActivity {
 
@@ -45,8 +43,8 @@ public class CustomerBasketActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customer_basket);
         String shop_name = getIntent().getExtras().getString("store");
         for(OrderData s: orderList){
-            if(s.GetOrderingFrom().equals(shop_name) && !s.GetIsComplete()){
-                order = new OrderData(s.GetOrderingFrom(),s.GetOrderID(), s.GetItems());
+            if(s.getOrderingFrom().equals(shop_name) && !s.getIsComplete()){
+                order = new OrderData(s.getOrderingFrom(),s.getOrderID(), s.getItems());
                 break;
             }
         }
@@ -82,7 +80,7 @@ public class CustomerBasketActivity extends AppCompatActivity {
 
     public void addItems(){
         table = (TableLayout) findViewById(R.id.items_table);
-        for(ItemData i: order.GetItems()){
+        for(ItemData i: order.getItems()){
             TableRow row = new TableRow(this);
             itemDisplay item = new itemDisplay(this,null);
             row.addView(item);

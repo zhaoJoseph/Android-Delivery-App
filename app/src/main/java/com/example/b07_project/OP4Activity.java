@@ -129,7 +129,7 @@ public class OP4Activity extends AppCompatActivity {
         items1.add(new ItemData(Ferrero, 999));
         items1.add(new ItemData(Aero, 4));
         OrderData order_1 = new OrderData("CustomerID1", "OwnerID1", items1);
-        order_1.SetOrderID("1-3509");
+        order_1.setOrderID("1-3509");
 
         List<ItemData> items2 = new ArrayList<>();
         items2.add(new ItemData(Mars, 45));
@@ -138,13 +138,13 @@ public class OP4Activity extends AppCompatActivity {
         items2.add(new ItemData(Godiva, 2));
         items2.add(new ItemData(Ferrero, 999));
         OrderData order_2 = new OrderData("CustomerID2", "OwnerID2", items2);
-        order_2.SetOrderID("2-9802");
+        order_2.setOrderID("2-9802");
 
         List<ItemData> items3 = new ArrayList<>();
         items3.add(new ItemData(Kitkat, 5));
         items3.add(new ItemData(Lindt, 9));
         OrderData order_3 = new OrderData("CustomerID3", "OwnerID3", items3);
-        order_3.SetOrderID("3-1098");
+        order_3.setOrderID("3-1098");
 
         orders_list.add(order_1);
         orders_list.add(order_2);
@@ -155,7 +155,7 @@ public class OP4Activity extends AppCompatActivity {
         List<OrderData> filtered_list = new ArrayList<>();
 
         for (OrderData order : orders_list) {
-            if (order.GetOrderID().toLowerCase().contains(text.toLowerCase())) {
+            if (order.getOrderID().toLowerCase().contains(text.toLowerCase())) {
                 filtered_list.add(order);
             }
         }

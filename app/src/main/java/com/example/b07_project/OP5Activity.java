@@ -49,14 +49,14 @@ public class OP5Activity extends AppCompatActivity {
         temp_build_orders_list();
 
         TextView owner = findViewById(R.id.OP5_order_id);
-        owner.setText(orders_list.get(position).GetOrderID());
+        owner.setText(orders_list.get(position).getOrderID());
 
         TextView customer = findViewById(R.id.OP5_customer);
-        customer.setText(orders_list.get(position).GetOrderBy());
+        customer.setText(orders_list.get(position).getOrderBy());
 
         recycler_view = findViewById(R.id.OP5RecyclerView);
         layout_manager = new LinearLayoutManager(this);
-        adapter = new OP5Adapter(orders_list.get(position).GetItems());
+        adapter = new OP5Adapter(orders_list.get(position).getItems());
 
         recycler_view.setLayoutManager(layout_manager);
         recycler_view.setAdapter(adapter);
@@ -129,7 +129,7 @@ public class OP5Activity extends AppCompatActivity {
         items1.add(new ItemData(Ferrero, 999));
         items1.add(new ItemData(Aero, 4));
         OrderData order_1 = new OrderData("CustomerID1", "OwnerID1", items1);
-        order_1.SetOrderID("1-3509");
+        order_1.setOrderID("1-3509");
 
         List<ItemData> items2 = new ArrayList<>();
         items2.add(new ItemData(Mars, 45));
@@ -138,13 +138,13 @@ public class OP5Activity extends AppCompatActivity {
         items2.add(new ItemData(Godiva, 2));
         items2.add(new ItemData(Ferrero, 999));
         OrderData order_2 = new OrderData("CustomerID2", "OwnerID2", items2);
-        order_2.SetOrderID("2-9802");
+        order_2.setOrderID("2-9802");
 
         List<ItemData> items3 = new ArrayList<>();
         items3.add(new ItemData(Kitkat, 5));
         items3.add(new ItemData(Lindt, 9));
         OrderData order_3 = new OrderData("CustomerID3", "OwnerID3", items3);
-        order_3.SetOrderID("3-1098");
+        order_3.setOrderID("3-1098");
 
         orders_list.add(order_1);
         orders_list.add(order_2);

@@ -15,19 +15,21 @@ public class OrderData {
     public OrderData(String by,String from,List<ItemData>items){
         //we set orderid after polling firebase
         this.orderBy = by;
+        this.orderID = "NOT SET";
         this.orderingFrom = from;
         this.items = items;
         this.isComplete = false;
     }
     public OrderData(){}
-    @Exclude
-    public void SetOrderID(String s){orderID = s;}
-    @Exclude
-    public void SetIsComplete(Boolean b){isComplete = b;}
 
-    public String GetOrderID() { return orderID;}
-    public String GetOrderBy(){return orderBy;}
-    public String GetOrderingFrom(){ return orderingFrom;}
-    public List<ItemData> GetItems(){return items;}
-    public Boolean GetIsComplete(){return isComplete;}
+    @Exclude
+    public void setOrderID(String s){orderID = s;}
+    @Exclude
+    public void setIsComplete(Boolean b){isComplete = b;}
+
+    public String getOrderID() { return orderID;}
+    public String getOrderBy(){return orderBy;}
+    public String getOrderingFrom(){ return orderingFrom;}
+    public List<ItemData> getItems(){return items;}
+    public Boolean getIsComplete(){return isComplete;}
 }

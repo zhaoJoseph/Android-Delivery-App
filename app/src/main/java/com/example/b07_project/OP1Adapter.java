@@ -12,7 +12,6 @@ import com.example.b07_project.Model.ItemDescriptionData;
 import java.util.ArrayList;
 import java.util.List;
 
-import AppClasses.ItemDescription;
 
 public class OP1Adapter extends RecyclerView.Adapter<OP1Adapter.OP1ViewHolder> {
     private List<ItemDescriptionData> items_list;
