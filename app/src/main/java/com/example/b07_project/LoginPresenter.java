@@ -1,7 +1,5 @@
 package com.example.b07_project;
 
-import android.view.View;
-
 import com.example.b07_project.Model.LoginModel;
 
 public class LoginPresenter implements Contract.presenter{

@@ -21,14 +21,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,19 +52,7 @@ public class signUpActivity extends AppCompatActivity {
 
 
     }
-    /*
-    uncomment this once we have a signout button else impossible to signout
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        if(currentUser != null){
-            boolean IsCustomer=true; // access user data
-            launch_page(IsCustomer);
-        }
-    }*/
     public void launch_page(boolean IsCustomer){
         Intent intent;
         if(IsCustomer){
