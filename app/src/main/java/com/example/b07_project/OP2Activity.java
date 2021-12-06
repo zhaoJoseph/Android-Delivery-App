@@ -32,6 +32,8 @@ public class OP2Activity extends AppCompatActivity {
         setContentView(R.layout.owner_page_2);
         mAuth = FirebaseAuth.getInstance();
         mDatabase_Shop_User = FirebaseDatabase.getInstance().getReference().child("shops").child(mAuth.getCurrentUser().getUid());
+
+        // Add clicking functionality to Add Item button
         add_item_button = findViewById(R.id.OP2_add_item_button);
         add_item_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,7 @@ public class OP2Activity extends AppCompatActivity {
                 EditText et_item_name = findViewById(R.id.OP2_item_name_edit_text);
                 String item_name = et_item_name.getText().toString();
                 if (item_name.matches("")){
+                    // Validate Item Name - Should not be empty
                     Toast.makeText(getApplicationContext(), "Invalid Item Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -47,6 +50,7 @@ public class OP2Activity extends AppCompatActivity {
                 EditText et_brand_name = findViewById(R.id.OP2_brand_name_edit_text);
                 String brand_name = et_brand_name.getText().toString();
                 if (brand_name.matches("")){
+                    // Validate Brand Name - Should not be empty
                     Toast.makeText(getApplicationContext(), "Invalid Brand Name", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -54,6 +58,7 @@ public class OP2Activity extends AppCompatActivity {
                 EditText et_price = findViewById(R.id.OP2_price_edit_text);
                 String price = et_price.getText().toString();
                 if (!price.matches("^\\d+\\.\\d{2}$")){
+                    // Validate Price - should be of x.xx format
                     Toast.makeText(getApplicationContext(), "Invalid Price", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -88,23 +93,28 @@ public class OP2Activity extends AppCompatActivity {
             }
         });
 
+        // Create Navigation bar
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.owner_bottomNavigationView);
         nav.setSelectedItemId(R.id.owner_navigation_store);
 
+        // Add clicking functionality to Navigation bar
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 switch(id){
                     case R.id.owner_navigation_store:
+                        // Go to OP1
                         Intent storeIntent = new Intent(OP2Activity.this, OP1Activity.class);
                         startActivity(storeIntent);
                         break;
                     case R.id.owner_navigation_orders:
+                        // Go to OP4
                         Intent orderIntent = new Intent(OP2Activity.this, OP4Activity.class);
                         startActivity(orderIntent);
                         break;
                     case R.id.owner_navigation_logout:
+                        // Logout
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(OP2Activity.this, MainActivity.class);
                         startActivity(intent);

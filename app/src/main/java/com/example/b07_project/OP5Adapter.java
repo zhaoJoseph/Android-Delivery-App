@@ -14,6 +14,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+// Build adapter for recyclerview in OP5 so the scrolling functionality works
 public class OP5Adapter extends RecyclerView.Adapter<OP5Adapter.OP5ViewHolder> {
     private ArrayList<ItemData> items_list;
 

@@ -15,6 +15,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+// Build adapter for recyclerview in OP4 so the scrolling functionality works
 public class OP4Adapter extends RecyclerView.Adapter<OP4Adapter.OP4ViewHolder> {
     private ArrayList<OrderData> orders_list;
     private OnItemClickListener listener;

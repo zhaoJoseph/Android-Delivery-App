@@ -85,23 +85,28 @@ public class OP3Activity extends AppCompatActivity {
             }
         });
 
+        // Create Navigation bar
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.owner_bottomNavigationView);
         nav.setSelectedItemId(R.id.owner_navigation_store);
 
+        // Add clicking functionality to Navigation bar
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 switch(id){
                     case R.id.owner_navigation_store:
+                        // Go to OP1
                         Intent storeIntent = new Intent(OP3Activity.this, OP1Activity.class);
                         startActivity(storeIntent);
                         break;
                     case R.id.owner_navigation_orders:
+                        // Go to OP4
                         Intent orderIntent = new Intent(OP3Activity.this, OP4Activity.class);
                         startActivity(orderIntent);
                         break;
                     case R.id.owner_navigation_logout:
+                        // Logout
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(OP3Activity.this, MainActivity.class);
                         startActivity(intent);
