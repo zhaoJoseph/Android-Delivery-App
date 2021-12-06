@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import com.example.b07_project.Model.ItemData;
 import com.example.b07_project.Model.ItemDescriptionData;
+import com.example.b07_project.Model.OrderData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,12 +33,14 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
     private TextView status;
     private TextView OrderId;
     private TextView price;
+    private ViewSwitcher switcher;
     private final double TotalPrice = 3.99;
+    private OrderData customerOrder;
     private final ArrayList<ItemData> orderList = new ArrayList<>(Arrays.asList(new ItemData(new ItemDescriptionData("Cookie","Chips Ahoy",3.99),2)));
     private final String store = "Walmart";
-    //TODO firebase: access the store name
+    //TODO firebase: access the order using the order id
     private final String stat = "Ready for Pickup";
-    //TODO firebase: access the status of the store
+    //TODO firebase: access the status of the order
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,12 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
         status.setText("Status: " + stat);
         Bundle id = getIntent().getExtras();
         OrderId.setText("Order ID: " +id.getString("order_id"));
+        //get the customer order based on the order id and put in customerOrder
+        // also put the itemlist in orderList or replace with orderlist
         addItems();
+        switcher = findViewById(R.id.orderView);
+        if(customerOrder.GetIsComplete())
+            switcher.showNext();
 
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         nav.getMenu().setGroupCheckable(0, false,true);
@@ -90,8 +100,16 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
             item.setQuantity(i.getQuantity());
             order.addView(row);
         }
-        price = (TextView) findViewById(R.id.recieptPrice);
+        price = (TextView) findViewById(R.id.receiptPrice);
         price.setText("Price: $" +Double.toString(TotalPrice));
         order.setStretchAllColumns(true);
     }
+
+    public void completeOrder(View view){
+        // TODO firebase: send information to the owner that order is complete
+        switcher = findViewById(R.id.orderView);
+        switcher.showNext();
+
+    }
+
 }
