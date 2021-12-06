@@ -51,7 +51,8 @@
     <string name="Orders">Orders</string>
     <string name="Logout">Logout</string>
     <string name="Your_Order">Your Order</string>
-    <string name="Received">Order Completed</string>
+    <string name="Complete">Complete Order</string>
+    <string name="Completed">Order Completed</string>
     <string-array name="account_type">
         <item>Customer Account</item>
         <item>Owner Account</item>
