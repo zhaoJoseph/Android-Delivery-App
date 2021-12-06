@@ -109,7 +109,7 @@
                 android:layout_marginBottom="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/Price"
+                android:text="@string/Brand"
                 android:textColor="#004D40" />
 
             <TextView
@@ -150,10 +150,11 @@
             android:id="@+id/relativeLayout3"
             android:layout_width="410dp"
             android:layout_height="48dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginBottom="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView4">
 
             <TextView
                 android:id="@+id/receiptPrice"
@@ -162,45 +163,24 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/orderView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            <ViewSwitcher
-                android:id="@+id/orderView"
+
+            <Button
+                android:id="@+id/orderComplete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:minHeight="48dp"
+                android:onClick="completeOrder"
+                android:text="@string/Complete"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/receiptPrice"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
 
-                <TextView
-                    android:id="@+id/completeText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/Completed"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/receiptPrice"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/orderComplete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
-                    android:onClick="completeOrder"
-                    android:text="@string/Complete"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/receiptPrice"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </ViewSwitcher>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

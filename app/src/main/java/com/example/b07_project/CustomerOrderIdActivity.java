@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -37,7 +38,6 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
     private TextView status;
     private TextView OrderId;
     private TextView price;
-    private ViewSwitcher switcher;
     private OrderData my_order = null;
     private  String store = "";
     //TODO firebase: access the order using the order id
@@ -64,7 +64,7 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
         //get the customer order based on the order id and put in customerOrder
         // also put the itemlist in orderList or replace with orderlist
 
-        switcher = findViewById(R.id.orderView);
+        Button completeOrder = (Button) findViewById(R.id.orderComplete);
 
         mDatabase.child("orders").child(order_id).addValueEventListener(new ValueEventListener() {
             @Override
@@ -73,15 +73,15 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
                 if(my_order!=null&&my_order.getItems()!=null)
                 {
                     addItems();
-                    switcher.reset();
+                    completeOrder.setVisibility(View.INVISIBLE);
                     if(my_order.getIsComplete())
                     {
-                        switcher.showNext();
+                        completeOrder.setVisibility(View.VISIBLE);
                     }
                 }
                 else{
                     my_order = new OrderData("","",new ArrayList<>());
-                    switcher.reset();
+                    completeOrder.setVisibility(View.INVISIBLE);
                     addItems();
                 }
             }
@@ -142,7 +142,6 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
 
     public void completeOrder(View view){
         // TODO firebase: send information to the owner that order is complete
-        switcher = findViewById(R.id.orderView);
         mDatabase.child("orders").child(order_id).removeValue();
         finish();
 
