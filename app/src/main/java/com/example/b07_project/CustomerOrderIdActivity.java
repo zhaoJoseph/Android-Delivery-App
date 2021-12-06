@@ -18,6 +18,11 @@ import com.example.b07_project.Model.OrderData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -33,12 +38,13 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
     private TextView OrderId;
     private TextView price;
     private ViewSwitcher switcher;
-    private final double TotalPrice = 3.99;
-    private OrderData customerOrder;
-    private final ArrayList<ItemData> orderList = new ArrayList<>(Arrays.asList(new ItemData(new ItemDescriptionData("Cookie","Chips Ahoy",3.99),2)));
-    private final String store = "Walmart";
+    private OrderData my_order = null;
+    private  String store = "";
     //TODO firebase: access the order using the order id
-    private final String stat = "Ready for Pickup";
+    private  String stat = "";
+    private String order_id = "";
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
     //TODO firebase: access the status of the order
 
     @Override
@@ -48,17 +54,44 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
         storeName = (TextView) findViewById(R.id.shop_name);
         status = (TextView) findViewById(R.id.status_name);
         OrderId = (TextView) findViewById(R.id.order_id_title);
-        storeName.setText("Store: " + store);
-        status.setText("Status: " + stat);
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         Bundle id = getIntent().getExtras();
+        storeName.setText("Store: " + id.getString("name"));
+        status.setText("Status: " + id.getString("Status"));
         OrderId.setText("Order ID: " +id.getString("order_id"));
+        order_id = id.getString("order_id");
         //get the customer order based on the order id and put in customerOrder
         // also put the itemlist in orderList or replace with orderlist
-        addItems();
+
         switcher = findViewById(R.id.orderView);
-        customerOrder = new OrderData("","",new ArrayList<>());
-        if(customerOrder.getIsComplete())
-            switcher.showNext();
+
+        mDatabase.child("orders").child(order_id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                my_order = snapshot.getValue(OrderData.class);
+                if(my_order!=null&&my_order.getItems()!=null)
+                {
+                    addItems();
+                    switcher.reset();
+                    if(my_order.getIsComplete())
+                    {
+                        switcher.showNext();
+                    }
+                }
+                else{
+                    my_order = new OrderData("","",new ArrayList<>());
+                    switcher.reset();
+                    addItems();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         nav.getMenu().setGroupCheckable(0, false,true);
@@ -91,24 +124,27 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
 
     public void addItems(){
         order = (TableLayout) findViewById(R.id.table_order);
-        for(ItemData i: orderList){
+        Double Totalprice = 0.0;
+        for(ItemData i: my_order.getItems()){
             TableRow row = new TableRow(this);
             itemDisplay item = new itemDisplay(this,null);
             row.addView(item);
             item.setName(i.getData().getName());
             item.setBrand(i.getData().getBrand());
             item.setQuantity(i.getQuantity());
+            Totalprice+=i.getQuantity()*i.getData().getPrice();
             order.addView(row);
         }
         price = (TextView) findViewById(R.id.receiptPrice);
-        price.setText("Price: $" +Double.toString(TotalPrice));
+        price.setText("Price: $" +Double.toString((double)Math.round(Totalprice * 1000d) / 1000d));
         order.setStretchAllColumns(true);
     }
 
     public void completeOrder(View view){
         // TODO firebase: send information to the owner that order is complete
         switcher = findViewById(R.id.orderView);
-        switcher.showNext();
+        mDatabase.child("orders").child(order_id).removeValue();
+        finish();
 
     }
 

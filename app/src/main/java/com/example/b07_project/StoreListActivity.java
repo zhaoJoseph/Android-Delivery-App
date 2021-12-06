@@ -83,6 +83,7 @@ public class StoreListActivity extends AppCompatActivity{
                 store_names.clear();
                 for(DataSnapshot children: snapshot.getChildren()){
                     ShopData s = children.getValue(ShopData.class);
+                    if(s==null)return;
                     shops.add(s);
                     store_names.add(s.getShop_name());
                     //Toast.makeText(StoreListActivity.this, s.getShop_name(), Toast.LENGTH_SHORT).show();

@@ -18,6 +18,11 @@ import com.example.b07_project.Model.OrderData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,22 +31,23 @@ public class OP4Activity extends AppCompatActivity {
     private RecyclerView recycler_view;
     private OP4Adapter adapter;
     private RecyclerView.LayoutManager layout_manager;
-    List<OrderData> orders_list;
-
+    private List<OrderData> orders_list = new ArrayList<>();
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.owner_page_4);
-
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         // FIREBASE - Get orders_list for Owner
 
-        temp_build_orders_list(); // To remove when Firebase is implemented
+        temp_build_orders_list();
 
         recycler_view = findViewById(R.id.OP4RecyclerView);
         layout_manager = new LinearLayoutManager(this);
-        adapter = new OP4Adapter((ArrayList<OrderData>) orders_list);
-
         recycler_view.setLayoutManager(layout_manager);
+        adapter = new OP4Adapter((ArrayList<OrderData>) orders_list);
         recycler_view.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new OP4Adapter.OnItemClickListener() {
@@ -52,6 +58,39 @@ public class OP4Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        mDatabase.child("orders").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                orders_list.clear();
+                for(DataSnapshot children: snapshot.getChildren()){
+                    OrderData o = children.getValue(OrderData.class);
+                    if(o==null||o.getItems()==null)return;
+                    if(!o.getIsComplete()&&o.getOrderingFrom().equals(mAuth.getCurrentUser().getUid())){
+                        orders_list.add(o);
+                    }
+                }
+                adapter = new OP4Adapter((ArrayList<OrderData>) orders_list);
+                recycler_view.setAdapter(adapter);
+
+                adapter.setOnItemClickListener(new OP4Adapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        Intent intent = new Intent(getApplicationContext(), OP5Activity.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("customer_id",orders_list.get(position).getOrderBy());
+                        intent.putExtra("order_id",orders_list.get(position).getOrderID());
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         EditText search_bar = findViewById(R.id.OP4_search);
         search_bar.addTextChangedListener(new TextWatcher() {
@@ -101,7 +140,8 @@ public class OP4Activity extends AppCompatActivity {
 
     public void temp_build_orders_list() {
         orders_list = new ArrayList<>();
-
+        /*
+        code snippet for testing
         ItemDescriptionData Kitkat = new ItemDescriptionData("Kitkat", "Nestle", 0.99);
         ItemDescriptionData Twix = new ItemDescriptionData("Twix", "Mars Inc.", 12.99);
         ItemDescriptionData Mars = new ItemDescriptionData("Mars", "Mars Inc.", 1234.69);
@@ -148,7 +188,7 @@ public class OP4Activity extends AppCompatActivity {
 
         orders_list.add(order_1);
         orders_list.add(order_2);
-        orders_list.add(order_3);
+        orders_list.add(order_3);*/
     }
 
     private void filter(String text) {
