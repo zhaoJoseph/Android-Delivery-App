@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">b07_project</string>
+    <string name="app_name">Grocery App</string>
     <string name="Dummy">android studio github sucks</string>
     <string name="searchText">Search</string>
     <string name="search_hint">Search for Stores...</string>

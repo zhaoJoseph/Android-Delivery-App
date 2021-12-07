@@ -39,9 +39,6 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
     private TextView OrderId;
     private TextView price;
     private OrderData my_order = null;
-    private  String store = "";
-    //TODO firebase: access the order using the order id
-    private  String stat = "";
     private String order_id = "";
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -51,21 +48,22 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_order_id);
+        //initialize variables
         storeName = (TextView) findViewById(R.id.shop_name);
         status = (TextView) findViewById(R.id.status_name);
         OrderId = (TextView) findViewById(R.id.order_id_title);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         Bundle id = getIntent().getExtras();
+        //build order details
         storeName.setText("Store: " + id.getString("name"));
         status.setText("Status: " + id.getString("Status"));
         OrderId.setText("Order ID: " +id.getString("order_id"));
         order_id = id.getString("order_id");
-        //get the customer order based on the order id and put in customerOrder
-        // also put the itemlist in orderList or replace with orderlist
+
 
         Button completeOrder = (Button) findViewById(R.id.orderComplete);
-
+        //query database for order and update button as needed
         mDatabase.child("orders").child(order_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -92,7 +90,7 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
             }
         });
 
-
+        //add navigation bar
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         nav.getMenu().setGroupCheckable(0, false,true);
 
@@ -106,15 +104,18 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
                     case R.id.navigation_stores:
                         Intent storeIntent = new Intent(CustomerOrderIdActivity.this, StoreListActivity.class);
                         startActivity(storeIntent);
+                        finish();
                         break;
                     case R.id.navigation_orders:
                         Intent orderIntent = new Intent(CustomerOrderIdActivity.this, CustomerOrderActivity.class);
                         startActivity(orderIntent);
+                        finish();
                         break;
                     case R.id.navigation_logout:
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(CustomerOrderIdActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                 }
                 return true;
@@ -122,6 +123,7 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
         });
     }
 
+    //build order items
     public void addItems(){
         order = (TableLayout) findViewById(R.id.table_order);
         Double Totalprice = 0.0;
@@ -140,8 +142,8 @@ public class CustomerOrderIdActivity extends AppCompatActivity {
         order.setStretchAllColumns(true);
     }
 
+    //remove order from firebase
     public void completeOrder(View view){
-        // TODO firebase: send information to the owner that order is complete
         mDatabase.child("orders").child(order_id).removeValue();
         finish();
 

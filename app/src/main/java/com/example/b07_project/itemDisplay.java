@@ -17,6 +17,7 @@ public class itemDisplay extends LinearLayout {
     private TextView textName;
     private TextView textBrand;
     private TextView textQuantity;
+    //used to display item details
     public itemDisplay(Context context, @Nullable AttributeSet attrs){
         super(context, attrs);
         LayoutInflater.from(getContext()).inflate(

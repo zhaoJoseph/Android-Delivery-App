@@ -31,27 +31,24 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-
+//Customer Page 4
 public class CustomerBasketActivity extends AppCompatActivity {
 
     private TableLayout table;
-    private TextView price;
-   // private final ArrayList<OrderData> orderList = new ArrayList<>(Arrays.asList(new OrderData("Walmart", "John",new ArrayList<ItemData>(Arrays.asList(new ItemData(new ItemDescriptionData("Cookie","Chips Ahoy",3.99),5))))));
     private OrderData order = null;
-    //private final double Totalprice = 3.99;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private String store_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //setup variables
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_basket);
         mAuth = FirebaseAuth.getInstance();
         store_id = getIntent().getExtras().getString("store_id");
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-
+        //add event listener to build basket
         mDatabase.child("basket").child(mAuth.getCurrentUser().getUid()).child(store_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -70,6 +67,7 @@ public class CustomerBasketActivity extends AppCompatActivity {
             }
         });
 
+        //navigation bar
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -80,15 +78,18 @@ public class CustomerBasketActivity extends AppCompatActivity {
                     case R.id.navigation_stores:
                         Intent storeIntent = new Intent(CustomerBasketActivity.this, StoreListActivity.class);
                         startActivity(storeIntent);
+                        finish();
                         break;
                     case R.id.navigation_orders:
                         Intent orderIntent = new Intent(CustomerBasketActivity.this, CustomerOrderActivity.class);
                         startActivity(orderIntent);
+                        finish();
                         break;
                     case R.id.navigation_logout:
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(CustomerBasketActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                 }
                 return true;
@@ -96,6 +97,7 @@ public class CustomerBasketActivity extends AppCompatActivity {
         });
     }
 
+    //build up the basket view
     public void addItems(){
         table = (TableLayout) findViewById(R.id.items_table);
         Double Totalprice = 0.0;
@@ -113,7 +115,8 @@ public class CustomerBasketActivity extends AppCompatActivity {
         price.setText("Price: $" +Double.toString((double)Math.round(Totalprice * 1000d) / 1000d));
         table.setStretchAllColumns(true);
     }
-
+    //complete order button
+    //query adds to orders and clears the basket
     public void complete_order(View view){
         mDatabase.child("basket").child(mAuth.getCurrentUser().getUid()).child(store_id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
