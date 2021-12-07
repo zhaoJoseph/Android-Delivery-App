@@ -72,7 +72,7 @@ public class ItemActivity extends AppCompatActivity {
 
         //build item details
         itemName.setText("Name: "+item);
-        itemPrice.setText("Price: "+price);
+        itemPrice.setText("Price: $"+price);
         itemBrand.setText("Brand: "+brand);
 
         //navigation bar
