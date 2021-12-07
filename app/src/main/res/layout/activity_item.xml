@@ -13,7 +13,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,9 +23,10 @@
 
         <TextView
             android:id="@+id/item_brand"
-            android:layout_width="300sp"
-            android:layout_height="49dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            android:layout_marginStart="10dp"
             android:hint="@string/brand_hint"
             android:textSize="25sp"
             app:layout_constraintBottom_toTopOf="@+id/item_cost"
@@ -38,8 +39,9 @@
 
         <TextView
             android:id="@+id/item_name"
-            android:layout_width="300sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:background="#FFFFFF"
             android:hint="@string/name_hint"
             android:textSize="25sp"
@@ -53,8 +55,9 @@
 
         <TextView
             android:id="@+id/item_cost"
-            android:layout_width="300sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:hint="@string/cost_hint"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -71,13 +74,11 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="247dp"
         android:layout_marginBottom="30dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:layout_conversion_absoluteHeight="112dp"
         tools:layout_conversion_absoluteWidth="411dp">
 
@@ -124,8 +125,8 @@
 
                 <TextView
                     android:id="@+id/quant"
-                    android:layout_width="63dp"
-                    android:layout_height="45dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="@string/zero"
                     android:textSize="25sp"
@@ -156,8 +157,8 @@
 
             <Button
                 android:id="@+id/order_button"
-                android:layout_width="144dp"
-                android:layout_height="64dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:onClick="added_to_order"
                 android:text="@string/order"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -173,7 +174,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

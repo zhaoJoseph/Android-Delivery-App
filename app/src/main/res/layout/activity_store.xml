@@ -9,60 +9,67 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout9"
-            android:layout_width="409dp"
-            android:layout_height="162dp"
-            android:layout_marginTop="14dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="239dp"
-                android:layout_height="52dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="69dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginBottom="41dp"
-                android:gravity="center"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/yourOrder"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/yourOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="69dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="45dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:onClick="openBasket"
                 android:text="@string/Your_Order"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="150dp"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/yourOrder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout4"
-            android:layout_width="408dp"
-            android:layout_height="485dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
 
@@ -81,8 +88,8 @@
             <ListView
                 android:id="@+id/item_list"
                 android:layout_width="match_parent"
-                android:layout_height="441dp"
-                android:layout_marginTop="1dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,8 +102,8 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="71dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout4"

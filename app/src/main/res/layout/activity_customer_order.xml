@@ -11,10 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
-        android:layout_height="668dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,27 +20,21 @@
 
         <TextView
             android:id="@+id/order_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="91dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="92dp"
             android:gravity="center"
             android:text="@string/order_title"
             android:textSize="35sp"
             app:layout_constraintBottom_toTopOf="@+id/searchbar_order"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/searchbar_order"
-            android:layout_width="282dp"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginEnd="101dp"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="@string/Search_Orders"
             android:importantForAutofill="no"
@@ -51,13 +43,12 @@
             app:layout_constraintBottom_toTopOf="@+id/order_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_title"
             tools:ignore="TextContrastCheck" />
 
         <ListView
             android:id="@+id/order_list"
             android:layout_width="match_parent"
-            android:layout_height="438dp"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -70,7 +61,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
