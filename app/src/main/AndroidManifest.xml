@@ -12,14 +12,13 @@
         <activity
             android:name=".CustomerOrderIdActivity"
             android:exported="false" />
-            />
         <activity
-
             android:windowSoftInputMode="adjustPan"
             android:name=".CustomerOrderActivity"
             android:exported="false" />
         <activity
             android:name=".CustomerBasketActivity"
+            android:parentActivityName=".StoreActivity"
             android:exported="false"/>
         <activity
             android:windowSoftInputMode="adjustPan"

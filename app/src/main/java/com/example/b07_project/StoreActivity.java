@@ -58,6 +58,7 @@ public class StoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity_store);
+        //initialize variables and add preferences to remember which shop we are in
         store = getSharedPreferences(PREF_NAME,MODE_PRIVATE);
         store_name = store.getString("pref_store", null);
         store_id = store.getString("pref_store_id",null);
@@ -66,14 +67,15 @@ public class StoreActivity extends AppCompatActivity {
             store_id = getIntent().getStringExtra("owner_id");
         }
         TextView store_text =  (TextView) findViewById(R.id.textView);
+        //build dummy shop incase firebase error
         store_text.setText(store_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ListView item_list = (ListView) findViewById(R.id.item_list);
         EditText filter = (EditText) findViewById(R.id.item_search_bar);
-
-
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, item_names);
         item_list.setAdapter(adapter);
+
+        //build shop using firebase
         if(store_id!=null)
             mDatabase.child("shops").child(store_id).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -97,7 +99,7 @@ public class StoreActivity extends AppCompatActivity {
                 }
             });
 
-
+        //search functionality to shop
         filter.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -120,6 +122,7 @@ public class StoreActivity extends AppCompatActivity {
 
         });
 
+        //onclick activity for each item
         item_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -127,8 +130,10 @@ public class StoreActivity extends AppCompatActivity {
                 String item_name = (String)adapter.getItem(position);
                 intent.putExtra("item_name", item_name);
                 intent.putExtra("store_id",store_id);
+                //remember preferences
                 store.edit().putString("pref_store", store_name).commit();
                 store.edit().putString("pref_store_id",store_id).commit();
+                //build item by polling database about item info
                 mDatabase.child("shops").child(store_id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -153,6 +158,7 @@ public class StoreActivity extends AppCompatActivity {
             }
         });
 
+        //navigation bar
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         nav.getMenu().setGroupCheckable(0, false,true);
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -164,15 +170,18 @@ public class StoreActivity extends AppCompatActivity {
                     case R.id.navigation_stores:
                         Intent storeIntent = new Intent(StoreActivity.this, StoreListActivity.class);
                         startActivity(storeIntent);
+                        finish();
                         break;
                     case R.id.navigation_orders:
                         Intent orderIntent = new Intent(StoreActivity.this, CustomerOrderActivity.class);
                         startActivity(orderIntent);
+                        finish();
                         break;
                     case R.id.navigation_logout:
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(StoreActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                 }
                 return true;
@@ -181,6 +190,7 @@ public class StoreActivity extends AppCompatActivity {
 
     }
 
+    //back button functionality
     @Override
     public void onBackPressed(){
         SharedPreferences.Editor editor = store.edit();
@@ -188,6 +198,7 @@ public class StoreActivity extends AppCompatActivity {
         editor.commit();
         super.onBackPressed();
     }
+    //basked functionality
     public void openBasket(View view){
         Intent basket = new Intent(StoreActivity.this, CustomerBasketActivity.class);
         basket.putExtra("store", store_name);
@@ -196,6 +207,7 @@ public class StoreActivity extends AppCompatActivity {
         store.edit().putString("pref_store_id",store_id).commit();
         startActivity(basket);
     }
+    //add back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

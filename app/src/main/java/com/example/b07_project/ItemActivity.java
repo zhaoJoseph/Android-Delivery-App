@@ -53,12 +53,12 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //initialize variables
         mAuth = FirebaseAuth.getInstance();
         ordered = (Button)findViewById(R.id.order_button);
         add = (Button)findViewById(R.id.add_amount);
         subtract = (Button)findViewById(R.id.remove_amount);
         quantity = (TextView) findViewById(R.id.quant);
-
         itemName = (TextView) findViewById(R.id.item_name);
         itemBrand = (TextView) findViewById(R.id.item_brand);
         itemPrice = (TextView) findViewById(R.id.item_cost);
@@ -70,12 +70,12 @@ public class ItemActivity extends AppCompatActivity {
             mDatabase = FirebaseDatabase.getInstance().getReference().child("basket").child(mAuth.getCurrentUser().getUid()).child(store_id);
 
 
+        //build item details
+        itemName.setText("Name: "+item);
+        itemPrice.setText("Price: "+price);
+        itemBrand.setText("Brand: "+brand);
 
-        itemName.setText(item);
-        itemPrice.setText(price);
-        itemBrand.setText(brand);
-
-
+        //navigation bar
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         nav.getMenu().setGroupCheckable(0, false,true);
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -87,15 +87,18 @@ public class ItemActivity extends AppCompatActivity {
                     case R.id.navigation_stores:
                         Intent storeIntent = new Intent(ItemActivity.this, StoreListActivity.class);
                         startActivity(storeIntent);
+                        finish();
                         break;
                     case R.id.navigation_orders:
                         Intent orderIntent = new Intent(ItemActivity.this, CustomerOrderActivity.class);
                         startActivity(orderIntent);
+                        finish();
                         break;
                     case R.id.navigation_logout:
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(ItemActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                 }
                 return true;
@@ -103,7 +106,7 @@ public class ItemActivity extends AppCompatActivity {
         });
     }
 
-
+    //functionality to amount buttons
     public void edit_quantity(View v){
         if(v == add){
             amount++;
@@ -116,6 +119,7 @@ public class ItemActivity extends AppCompatActivity {
         quantity.setText(Integer.toString(amount));
     }
 
+    //add the amount specified to orders
     public void added_to_order(View v){
         //add to order
 
@@ -129,6 +133,7 @@ public class ItemActivity extends AppCompatActivity {
                     if(o==null||o.getItems()==null){
                         //no order structure or order has no items
                         if(amount!=0) {
+                            //create new order
                             List<ItemData> i = new ArrayList<>();
                             i.add(d);
                             OrderData new_order = new OrderData(mAuth.getCurrentUser().getUid(), store_id, i);
@@ -137,6 +142,7 @@ public class ItemActivity extends AppCompatActivity {
                     }else{
                         //order has no instance of item d
                         if(!o.getItems().contains(d)){
+                            //add to existing order
                             if(amount!=0) {
                                 o.getItems().add(d);
                                 mDatabase.setValue(o);

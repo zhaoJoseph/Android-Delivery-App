@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
         setContentView(R.layout.activity_main);
 
     }
+    //if user somehow comes back without signing out
     @Override
     public void onStart(){
         super.onStart();
@@ -39,14 +40,12 @@ public class MainActivity extends AppCompatActivity implements Contract.View{
     public void launch_page_customer(){
         Intent intent = new Intent(this, StoreListActivity.class);
         startActivity(intent);
-        finish();
     }
 
     @Override
     public void launch_page_owner(){
         Intent intent = new Intent(this, OP1Activity.class);
         startActivity(intent);
-        finish();
     }
 
 

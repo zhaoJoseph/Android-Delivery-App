@@ -40,23 +40,20 @@ public class StoreListActivity extends AppCompatActivity{
     private DatabaseReference mDatabase;
     private final String PREF_NAME = "pref_name";
     private ArrayAdapter adapter;
-
     private ArrayList<ShopData> shops= new ArrayList<>();
-
     private ArrayList<String> store_names = new ArrayList<>();
-    // TODO firebase: need to pull all shops from database and store in an arraylist and same for their names
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storelist);
+        //initialize variables
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         ListView store_list = (ListView) findViewById(R.id.store_items);
         EditText filter = (EditText) findViewById(R.id.search_bar);
-
+        //build dummy shop list with adapter
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, store_names);
-
         getSharedPreferences(PREF_NAME,0).edit().clear().commit();
         store_list.setAdapter(adapter);
 
@@ -76,6 +73,7 @@ public class StoreListActivity extends AppCompatActivity{
 
             }
         });
+        //use firebase to query and build the actual shop list
         mDatabase.child("shops").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -86,7 +84,6 @@ public class StoreListActivity extends AppCompatActivity{
                     if(s==null)return;
                     shops.add(s);
                     store_names.add(s.getShop_name());
-                    //Toast.makeText(StoreListActivity.this, s.getShop_name(), Toast.LENGTH_SHORT).show();
                 }
                 adapter = new ArrayAdapter<String>(StoreListActivity.this, android.R.layout.simple_list_item_1, store_names);
                 store_list.setAdapter(adapter);
@@ -98,7 +95,7 @@ public class StoreListActivity extends AppCompatActivity{
 
             }
         });
-
+        //search functionality
         filter.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -121,7 +118,7 @@ public class StoreListActivity extends AppCompatActivity{
 
         });
 
-
+        //bottom navigation bar
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -134,11 +131,13 @@ public class StoreListActivity extends AppCompatActivity{
                     case R.id.navigation_orders:
                         Intent orderIntent = new Intent(StoreListActivity.this, CustomerOrderActivity.class);
                         startActivity(orderIntent);
+                        finish();
                         break;
                     case R.id.navigation_logout:
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(StoreListActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                 }
 

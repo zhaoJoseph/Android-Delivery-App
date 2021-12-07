@@ -140,19 +140,19 @@ public class OP1Activity extends AppCompatActivity {
                 switch(id){
                     case R.id.owner_navigation_store:
                         // Go to OP1
-                        Intent storeIntent = new Intent(OP1Activity.this, OP1Activity.class);
-                        startActivity(storeIntent);
                         break;
                     case R.id.owner_navigation_orders:
                         // Go to OP4
                         Intent orderIntent = new Intent(OP1Activity.this, OP4Activity.class);
                         startActivity(orderIntent);
+                        finish();
                         break;
                     case R.id.owner_navigation_logout:
                         // Logout
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(OP1Activity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                 }
                 return true;

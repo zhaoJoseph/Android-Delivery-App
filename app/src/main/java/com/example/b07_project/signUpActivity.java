@@ -52,6 +52,13 @@ public class signUpActivity extends AppCompatActivity {
 
 
     }
+    //if user somehow comes back without signing out
+    @Override
+    public void onStart(){
+        super.onStart();
+        if(mAuth.getCurrentUser()!=null)
+            mAuth.signOut();
+    }
 
     public void launch_page(boolean IsCustomer){
         Intent intent;

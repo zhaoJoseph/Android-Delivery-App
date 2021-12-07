@@ -44,13 +44,17 @@ public class CustomerOrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //initialize variables
         setContentView(R.layout.activity_customer_order);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         ListView id_list = (ListView) findViewById(R.id.order_list);
         EditText search = (EditText) findViewById(R.id.searchbar_order);
+        //makes a view incase firebase code fails
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, order_names);
         id_list.setAdapter(adapter);
+
+        //search functionality
         search.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -72,21 +76,10 @@ public class CustomerOrderActivity extends AppCompatActivity {
 
 
         });
+        //query firebase and build orders
         mDatabase.child("orders").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                /*
-                                shops.clear();
-                store_names.clear();
-                for(DataSnapshot children: snapshot.getChildren()){
-                    ShopData s = children.getValue(ShopData.class);
-                    shops.add(s);
-                    store_names.add(s.getShop_name());
-                    //Toast.makeText(StoreListActivity.this, s.getShop_name(), Toast.LENGTH_SHORT).show();
-                }
-                adapter = new ArrayAdapter<String>(StoreListActivity.this, android.R.layout.simple_list_item_1, store_names);
-                store_list.setAdapter(adapter);
-                 */
                 orders.clear();
                 order_names.clear();
                 for(DataSnapshot children: snapshot.getChildren()){
@@ -109,16 +102,17 @@ public class CustomerOrderActivity extends AppCompatActivity {
             }
         });
 
+        //Add listner to each order in view
         id_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), CustomerOrderIdActivity.class);
-                String order = (String)adapter.getItem(position);
                 intent.putExtra("order_id", orders.get(position).getOrderID());
                 String status = "Not Complete";
                 if(orders.get(position).getIsComplete())
                     status="Ready to Pickup";
                 intent.putExtra("Status",status);
+                //get shop name and put it into the intent and call activity
                 mDatabase.child("shops").child(orders.get(position).getOrderingFrom()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -139,6 +133,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
             }
         });
 
+        //botton navigation bar
         BottomNavigationView nav = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         nav.getMenu().setGroupCheckable(0, false,true);
 
@@ -151,6 +146,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
                     case R.id.navigation_stores:
                         Intent orderIntent = new Intent(CustomerOrderActivity.this, StoreListActivity.class);
                         startActivity(orderIntent);
+                        finish();
                         break;
                         case R.id.navigation_orders:
                             break;
@@ -158,6 +154,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
                             FirebaseAuth.getInstance().signOut();
                             Intent intent = new Intent(CustomerOrderActivity.this, MainActivity.class);
                             startActivity(intent);
+                            finish();
                             break;
                 }
                 return true;
