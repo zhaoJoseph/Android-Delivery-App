@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">b07_project</string>
+    <string name="app_name">Grocery App</string>
     <string name="Dummy">android studio github sucks</string>
     <string name="searchText">Search</string>
     <string name="search_hint">Search for Stores...</string>
     <string name="search_item">Search for Items... </string>
     <string name="add_quantity">+</string>
     <string name="remove_quantity">-</string>
-    <string name="order_title">Your Order</string>
+    <string name="order_title">Current Orders</string>
     <string name="zero">0</string>
     <string name="order">Add to Order</string>
     <string name="name_hint">Item Name...</string>
@@ -17,17 +17,48 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_sign_up">signUpActivity</string>
+    <!-- Strings for Owner pages -->
+    <string name="dollar_sign">$</string>
+    <string name="add_item">Add Item</string>
+    <string name="delete_item">Delete Item</string>
+    <string name="item_name">Item Name:</string>
+    <string name="brand_name">Brand Name:</string>
+    <string name="price">Price :</string>
+    <string name="orders">Orders</string>
+    <string name="orders_search_hint">Search for Orders ...</string>
+    <string name="order_id">Order ID: </string>
+    <string name="customer">Customer: </string>
+    <string name="items">Items</string>
+    <string name="quantity">Quantity</string>
+    <string name="mark_as_complete">Mark as Complete</string>
     <!-- Strings used for fragments for navigation -->
+    <string name="basket">Basket</string>
+    <string name="Shop">Shop: </string>
+    <string name="Status">Status: </string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
+    <string name="Checkout">Checkout</string>
+    <string name="Item">Item</string>
+    <string name="Price">Price</string>
+    <string name="Quantity">Quantity</string>
+    <string name="Search_Orders">Search Orders</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
+    <string name="Stores">Stores</string>
+    <string name="Store">Store</string>
+    <string name="Orders">Orders</string>
+    <string name="Logout">Logout</string>
+    <string name="Your_Order">Your Order</string>
+    <string name="Complete">Complete Order</string>
+    <string name="Completed">Order Completed</string>
+    <string name="Brand">Brand</string>
     <string-array name="account_type">
         <item>Customer Account</item>
         <item>Owner Account</item>
     </string-array>
+    <string name="title_activity_customer_navigation">CustomerNavigationActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

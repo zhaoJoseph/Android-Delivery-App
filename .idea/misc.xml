@@ -3,9 +3,55 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1814814814814815" />
+        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_basket.xml" value="0.264" />
+        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_order_id.xml" value="0.32407407407407407" />
+        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_item.xml" value="0.25" />
+        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/display_item.xml" value="0.25" />
+        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/owner_item_card.xml" value="0.25" />
+        <entry key="..\:/Users/Wasimroks/AndroidStudioProjects/b07_project/app/src/main/res/layout/owner_page_1.xml" value="0.1" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_basket.xml" value="0.4624094202898551" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_customer_store_list.xml" value="0.25886524822695034" />
         <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_main.xml" value="0.855036855036855" />
         <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_sign_up.xml" value="0.5546875" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_store.xml" value="0.4624094202898551" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/activity_storelist.xml" value="0.2786458333333333" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/owner_item_card.xml" value="0.39427083333333335" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/owner_item_ordered_card.xml" value="0.39427083333333335" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/owner_order_card.xml" value="0.39427083333333335" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/owner_page_1.xml" value="0.39427083333333335" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/owner_page_2.xml" value="0.39427083333333335" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/owner_page_3.xml" value="0.39427083333333335" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/owner_page_4.xml" value="0.39427083333333335" />
+        <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/owner_page_5.xml" value="0.39427083333333335" />
         <entry key="..\:/Users/jianl/AndroidStudioProjects/b07_project/app/src/main/res/layout/sign_up.xml" value="0.9852579852579852" />
+        <entry key="app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.20546875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.20546875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.20546875" />
+        <entry key="app/src/main/res/drawable/ic_baseline_store_24.xml" value="0.20546875" />
+        <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.20546875" />
+        <entry key="app/src/main/res/layout/activity_customer_basket.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_customer_navigation.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_customer_order.xml" value="0.2776978417266187" />
+        <entry key="app/src/main/res/layout/activity_customer_order_id.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_customer_store_item_list.xml" value="0.35520833333333335" />
+        <entry key="app/src/main/res/layout/activity_customer_store_list.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/activity_item.xml" value="0.20520833333333333" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.1082427536231884" />
+        <entry key="app/src/main/res/layout/activity_store.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_storelist.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/customer_navigation_activity.xml" value="0.19010416666666666" />
+        <entry key="app/src/main/res/layout/display_item.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.209375" />
+        <entry key="app/src/main/res/layout/owner_item_card.xml" value="0.209375" />
+        <entry key="app/src/main/res/layout/owner_page_1.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/owner_page_2.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/owner_page_3.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/owner_page_4.xml" value="0.193359375" />
+        <entry key="app/src/main/res/layout/owner_page_5.xml" value="0.193359375" />
+        <entry key="app/src/main/res/layout/view_item.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.21203703703703702" />
+        <entry key="app/src/main/res/menu/owner_bottom_nav_menu.xml" value="0.193359375" />
       </map>
     </option>
   </component>

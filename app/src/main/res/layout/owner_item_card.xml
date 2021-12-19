@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:layout_margin="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
+
+        <!--Item Name-->
+        <TextView
+            android:id="@+id/shop_item_name"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <!--Item Brand-->
+        <TextView
+            android:id="@+id/shop_item_brand"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp" />
+
+        <!--$ Sign-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="310dp"
+            android:layout_centerVertical="true"
+            android:text="@string/dollar_sign"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <!--Item Price-->
+        <TextView
+            android:id="@+id/shop_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="320dp"
+            android:textSize="16sp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
